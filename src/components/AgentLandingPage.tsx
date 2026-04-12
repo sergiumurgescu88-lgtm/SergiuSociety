@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowLeft } from "lucide-react";
 
 interface Feature {
   title: string;
@@ -27,9 +27,18 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
     <div className="min-h-screen" style={{ background: "#000000", color: "#ffffff" }}>
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: "#1a1a1a" }}>
-        <Link to={`/${name.toLowerCase().replace(/\s/g, "")}`} className="text-xl font-bold" style={{ color: accentHex }}>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white transition-all"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            🇷🇴 DaRomania
+          </Link>
+          <Link to={`/${name.toLowerCase().replace(/\s/g, "")}`} className="text-xl font-bold" style={{ color: accentHex }}>
           {name}
         </Link>
+        </div>
         <div className="flex items-center gap-6">
           {otherAgents.map((agent) => (
             <Link key={agent.path} to={agent.path} className="text-sm text-gray-400 hover:text-white transition-colors">
