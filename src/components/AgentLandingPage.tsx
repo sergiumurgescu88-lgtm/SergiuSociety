@@ -33,7 +33,7 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white transition-all"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            🇷🇴 DaRomania
+            DaRomania
           </Link>
           <Link to={`/${name.toLowerCase().replace(/\s/g, "")}`} className="text-xl font-bold" style={{ color: accentHex }}>
           {name}
