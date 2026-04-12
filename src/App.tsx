@@ -5,6 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import OpenClaw from "./pages/OpenClaw.tsx";
+import PaperclipClaw from "./pages/PaperclipClaw.tsx";
+import NemoClaw from "./pages/NemoClaw.tsx";
+import HermesClaw from "./pages/HermesClaw.tsx";
 
 const queryClient = new QueryClient();
 
