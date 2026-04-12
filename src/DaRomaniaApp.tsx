@@ -1144,10 +1144,10 @@ export default function App() {
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsAgentsOpen(false)} />
                   <div className="absolute left-0 top-8 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px]">
-                    <a href="https://sergiuclaw.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsAgentsOpen(false)} className="block w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors no-underline">🤖 SergiuClaw</a>
-                    <a href="https://nemoclaw.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsAgentsOpen(false)} className="block w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors no-underline">⚡ NemoClaw</a>
-                    <a href="https://hermes.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsAgentsOpen(false)} className="block w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors no-underline">🧠 HermesClaw</a>
                     <button onClick={() => { pushHistoryState(); nav("/openclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 OpenClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/paperclipclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">📎 PaperclipClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/nemoclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">⚡ NemoClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/hermesclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🧠 HermesClaw</button>
                   </div>
                 </>
               )}
@@ -1237,10 +1237,10 @@ export default function App() {
                 </button>
                 {isMobileAgentsOpen && (
                   <div className="pl-6 flex flex-col gap-1">
-                    <a href="https://sergiuclaw.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200 no-underline">🤖 SergiuClaw</a>
-                    <a href="https://nemoclaw.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200 no-underline">⚡ NemoClaw</a>
-                    <a href="https://hermes.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200 no-underline">🧠 HermesClaw</a>
                     <button onClick={() => { pushHistoryState(); nav("/openclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 OpenClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/paperclipclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">📎 PaperclipClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/nemoclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">⚡ NemoClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/hermesclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🧠 HermesClaw</button>
                   </div>
                 )}
                 <button onClick={() => { pushHistoryState(); nav("/academy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🎓 Academy</button>
