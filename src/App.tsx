@@ -20,6 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/openclaw" element={<OpenClaw />} />
+          <Route path="/paperclipclaw" element={<PaperclipClaw />} />
+          <Route path="/nemoclaw" element={<NemoClaw />} />
+          <Route path="/hermesclaw" element={<HermesClaw />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
