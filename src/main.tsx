@@ -5,6 +5,7 @@ import DaRomaniaApp from "./DaRomaniaApp";
 import ArsenalPage from "./ArsenalPage";
 import AcademyPage from "./AcademyPage";
 import AfacereLaCheiePage from "./AfacereLaCheiePage";
+import ChatBuddyPage from "./ChatBuddyPage";
 import OpenClaw from "./pages/OpenClaw";
 import PaperclipClaw from "./pages/PaperclipClaw";
 import NemoClaw from "./pages/NemoClaw";
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/arsenalapi" element={<ArsenalPage />} />
         <Route path="/academy" element={<AcademyPage />} />
         <Route path="/afacerelacheie" element={<AfacereLaCheiePage />} />
+        <Route path="/chatbuddy" element={<ChatBuddyPage />} />
         <Route path="/openclaw" element={<OpenClaw />} />
         <Route path="/paperclipclaw" element={<PaperclipClaw />} />
         <Route path="/nemoclaw" element={<NemoClaw />} />

@@ -1154,7 +1154,7 @@ export default function App() {
             </div>
             <button onClick={() => { pushHistoryState(); nav("/academy"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🎓 Academy</button>
             <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">{t.nav_afacere}</button>
-            <a href="https://pascupas.daromania.online" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900 no-underline">🚀 Pas cu Pas</a>
+            <button onClick={() => { pushHistoryState(); nav("/chatbuddy"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🤖 Vibe Buddy</button>
             
             {/* Auth Button Desktop */}
             {isAuthenticated ? (
@@ -1245,7 +1245,7 @@ export default function App() {
                 )}
                 <button onClick={() => { pushHistoryState(); nav("/academy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🎓 Academy</button>
                 <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">💼 Afacere la Cheie</button>
-                <a href="https://pascupas.daromania.online" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200 no-underline block">🚀 Pas cu Pas</a>
+                <button onClick={() => { pushHistoryState(); nav("/chatbuddy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🤖 Vibe Buddy</button>
                 <div className="border-t border-slate-100 mt-1 pt-2 flex gap-2">
                   {(['ro','en','es'] as Lang[]).map(l => (
                     <button key={l} onClick={() => { setLang(l); setIsMobileMenuOpen(false); }}
