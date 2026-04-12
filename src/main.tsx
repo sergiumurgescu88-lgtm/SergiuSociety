@@ -5,6 +5,7 @@ import DaRomaniaApp from "./DaRomaniaApp";
 import ArsenalPage from "./ArsenalPage";
 import AcademyPage from "./AcademyPage";
 import AfacereLaCheiePage from "./AfacereLaCheiePage";
+import ChatBuddyPage from "./ChatBuddyPage";
 import OpenClaw from "./pages/OpenClaw";
 import PaperclipClaw from "./pages/PaperclipClaw";
 import NemoClaw from "./pages/NemoClaw";
