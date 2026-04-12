@@ -38,6 +38,7 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
           <Link to={`/${name.toLowerCase().replace(/\s/g, "")}`} className="text-xl font-bold" style={{ color: accentHex }}>
           {name}
         </Link>
+        </div>
         <div className="flex items-center gap-6">
           {otherAgents.map((agent) => (
             <Link key={agent.path} to={agent.path} className="text-sm text-gray-400 hover:text-white transition-colors">
