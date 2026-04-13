@@ -25,66 +25,116 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
 
   return (
     <div className="min-h-screen" style={{ background: "#000000", color: "#ffffff" }}>
+
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: "#1a1a1a" }}>
-        <div className="flex items-center gap-4">
-          <Link
-            to="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white transition-all"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            DaRomania
-          </Link>
-          <Link to={`/${name.toLowerCase().replace(/\s/g, "")}`} className="text-xl font-bold" style={{ color: accentHex }}>
-          {name}
-        </Link>
-        </div>
-        <div className="flex items-center gap-6">
-          {otherAgents.map((agent) => (
-            <Link key={agent.path} to={agent.path} className="text-sm text-gray-400 hover:text-white transition-colors">
-              {agent.name}
+      <nav style={{ borderColor: "#1a1a1a", borderBottomWidth: 1, borderBottomStyle: "solid" }}>
+        {/* Rând 1: Back + Name + Buddy */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <Link
+              to="/"
+              style={{
+                display: "flex", alignItems: "center", gap: 5,
+                padding: "6px 12px", borderRadius: 999,
+                fontSize: 12, fontWeight: 600,
+                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(255,255,255,0.05)",
+                color: "#ccc", textDecoration: "none",
+              }}
+            >
+              <ArrowLeft style={{ width: 13, height: 13 }} />
+              DaRomania
             </Link>
-          ))}
+            <Link
+              to={`/${name.toLowerCase().replace(/\s/g, "")}`}
+              style={{ fontSize: 18, fontWeight: 700, color: accentHex, textDecoration: "none" }}
+            >
+              {name}
+            </Link>
+          </div>
           <a
             href="https://pascupas.daromania.online"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg text-sm font-semibold text-black transition-opacity hover:opacity-90"
-            style={{ background: accentHex }}
+            style={{
+              padding: "8px 14px", borderRadius: 8,
+              fontSize: 13, fontWeight: 700,
+              color: "#000", background: accentHex,
+              textDecoration: "none", whiteSpace: "nowrap",
+            }}
           >
             🤖 Vibe Buddy
           </a>
         </div>
+        {/* Rând 2: alți agenți scroll orizontal */}
+        <div style={{
+          display: "flex", gap: 6, overflowX: "auto",
+          padding: "6px 16px 10px",
+          scrollbarWidth: "none",
+        }}>
+          {otherAgents.map((agent) => (
+            <Link
+              key={agent.path}
+              to={agent.path}
+              style={{
+                flexShrink: 0, fontSize: 12, fontWeight: 600,
+                padding: "5px 12px", borderRadius: 999,
+                border: "1px solid #333", color: "#aaa",
+                textDecoration: "none", whiteSpace: "nowrap",
+              }}
+            >
+              {agent.name}
+            </Link>
+          ))}
+        </div>
       </nav>
 
       {/* Hero */}
-      <section className="max-w-4xl mx-auto px-6 pt-24 pb-16 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">{title}</h1>
-        {subtitle && <p className="text-xl text-gray-400 mb-6">{subtitle}</p>}
+      <section style={{ maxWidth: 720, margin: "0 auto", padding: "40px 16px 32px", textAlign: "center" }}>
+        <h1 style={{ fontSize: "clamp(1.6rem, 5vw, 3.5rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: 16 }}>
+          {title}
+        </h1>
+        {subtitle && (
+          <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.2rem)", color: "#9ca3af", marginBottom: 16 }}>
+            {subtitle}
+          </p>
+        )}
         {quote && (
-          <blockquote className="text-lg italic text-gray-300 mb-8 max-w-2xl mx-auto border-l-4 pl-4 text-left" style={{ borderColor: accentHex }}>
+          <blockquote style={{
+            fontSize: "clamp(0.9rem, 2vw, 1.1rem)", fontStyle: "italic",
+            color: "#d1d5db", marginBottom: 24, maxWidth: 560, margin: "0 auto 24px",
+            borderLeft: `4px solid ${accentHex}`, paddingLeft: 14, textAlign: "left",
+          }}>
             "{quote.text}"
-            {quote.author && <footer className="text-sm text-gray-500 mt-2">— {quote.author}</footer>}
+            {quote.author && (
+              <footer style={{ fontSize: 12, color: "#6b7280", marginTop: 6 }}>— {quote.author}</footer>
+            )}
           </blockquote>
         )}
 
         {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, marginBottom: 28 }}>
           {stats.map((stat, i) => (
-            <span key={i} className="px-4 py-2 rounded-full text-sm font-semibold border" style={{ borderColor: accentHex, color: accentHex }}>
+            <span key={i} style={{
+              padding: "7px 14px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+              border: `1.5px solid ${accentHex}`, color: accentHex,
+            }}>
               {stat.value} {stat.label}
             </span>
           ))}
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 340, margin: "0 auto" }}>
           <a
             href="https://pascupas.daromania.online"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-lg font-bold text-black text-lg transition-opacity hover:opacity-90"
-            style={{ background: accentHex }}
+            style={{
+              padding: "14px 24px", borderRadius: 10, fontWeight: 700,
+              color: "#000", background: accentHex, fontSize: 16,
+              textDecoration: "none", display: "block", textAlign: "center",
+            }}
           >
             Instalează cu AI Buddy →
           </a>
@@ -92,8 +142,11 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 rounded-lg font-bold text-lg border transition-colors hover:bg-white/10"
-            style={{ borderColor: "#333", color: "#fff" }}
+            style={{
+              padding: "14px 24px", borderRadius: 10, fontWeight: 700,
+              color: "#fff", border: "1.5px solid #444", fontSize: 16,
+              textDecoration: "none", display: "block", textAlign: "center",
+            }}
           >
             GitHub →
           </a>
@@ -102,38 +155,62 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
 
       {/* Warning Box */}
       {warningBox && (
-        <div className="max-w-3xl mx-auto px-6 mb-12">
-          <div className="rounded-lg px-6 py-4 text-sm font-semibold" style={{ background: "#fbbf2420", border: "1px solid #fbbf24", color: "#fbbf24" }}>
+        <div style={{ maxWidth: 680, margin: "0 auto 24px", padding: "0 16px" }}>
+          <div style={{
+            borderRadius: 10, padding: "12px 16px", fontSize: 13, fontWeight: 600,
+            background: "#fbbf2420", border: "1px solid #fbbf24", color: "#fbbf24",
+          }}>
             ⚠️ {warningBox}
           </div>
         </div>
       )}
 
       {/* Features Grid */}
-      <section className="max-w-5xl mx-auto px-6 pb-20">
-        <h2 className="text-3xl font-bold text-center mb-12">Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section style={{ maxWidth: 720, margin: "0 auto", padding: "0 16px 32px" }}>
+        <h2 style={{ fontSize: "clamp(1.3rem, 4vw, 2rem)", fontWeight: 700, textAlign: "center", marginBottom: 20 }}>
+          Features
+        </h2>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 200px), 1fr))",
+          gap: 12,
+        }}>
           {features.map((feature, i) => (
-            <div key={i} className="rounded-xl p-6" style={{ background: "#0a0a0a", border: "1px solid #1a1a1a" }}>
-              <h3 className="text-lg font-bold mb-2" style={{ color: accentHex }}>{feature.title}</h3>
-              <p className="text-sm text-gray-400">{feature.description}</p>
+            <div key={i} style={{
+              borderRadius: 12, padding: "16px",
+              background: "#0a0a0a", border: "1px solid #1a1a1a",
+            }}>
+              <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 6, color: accentHex }}>
+                {feature.title}
+              </h3>
+              <p style={{ fontSize: 13, color: "#9ca3af", lineHeight: 1.5 }}>
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Pricing */}
-      <section className="max-w-md mx-auto px-6 pb-20">
-        <div className="rounded-2xl p-8 text-center" style={{ background: "#0a0a0a", border: `2px solid ${accentHex}` }}>
-          <h3 className="text-2xl font-bold mb-2">Pro Plan</h3>
-          <p className="text-5xl font-bold mb-6" style={{ color: accentHex }}>$9<span className="text-lg text-gray-400">/lună</span></p>
-          <div className="flex flex-col gap-3">
+      <section style={{ maxWidth: 360, margin: "0 auto", padding: "0 16px 40px" }}>
+        <div style={{
+          borderRadius: 16, padding: "28px 20px", textAlign: "center",
+          background: "#0a0a0a", border: `2px solid ${accentHex}`,
+        }}>
+          <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>Pro Plan</h3>
+          <p style={{ fontSize: 40, fontWeight: 700, marginBottom: 20, color: accentHex }}>
+            $9<span style={{ fontSize: 15, color: "#9ca3af", fontWeight: 400 }}>/lună</span>
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <a
               href="https://buy.stripe.com/bJe14o1Ht3ZCamfedh5os00"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 rounded-lg font-bold text-black text-lg transition-opacity hover:opacity-90"
-              style={{ background: "#fbbf24", display: "block" }}
+              style={{
+                display: "block", padding: "13px", borderRadius: 10,
+                fontWeight: 700, color: "#000", background: "#fbbf24",
+                fontSize: 16, textDecoration: "none", textAlign: "center",
+              }}
             >
               Cumpără acum
             </a>
@@ -141,8 +218,11 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
               href="https://wa.me/40768676141"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 rounded-lg font-bold text-lg border transition-colors hover:bg-white/10"
-              style={{ borderColor: "#25D366", color: "#25D366", display: "block" }}
+              style={{
+                display: "block", padding: "13px", borderRadius: 10,
+                fontWeight: 700, fontSize: 16, textDecoration: "none", textAlign: "center",
+                border: "1.5px solid #25D366", color: "#25D366",
+              }}
             >
               WhatsApp
             </a>
@@ -151,13 +231,17 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t px-6 py-8 text-center text-sm text-gray-500" style={{ borderColor: "#1a1a1a" }}>
-        <div className="flex items-center justify-center gap-4">
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
-            GitHub <ExternalLink size={14} />
+      <footer style={{
+        borderTop: "1px solid #1a1a1a", padding: "20px 16px",
+        textAlign: "center", fontSize: 13, color: "#6b7280",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer"
+            style={{ color: "#9ca3af", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+            GitHub <ExternalLink size={13} />
           </a>
           <span>•</span>
-          <span>Powered by <strong className="text-white">SSociety</strong></span>
+          <span>Powered by <strong style={{ color: "#fff" }}>SSociety</strong></span>
         </div>
       </footer>
     </div>

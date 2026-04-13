@@ -73,12 +73,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginWithGoogle = async () => {
     try {
-      const { lovable } = await import('@/integrations/lovable/index');
-      const result = await lovable.auth.signInWithOAuth('google', {
-        redirect_uri: window.location.origin,
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        },
       });
-      if (result.error) return { ok: false, error: String(result.error) };
-      if (result.redirected) return { ok: true };
+      if (error) return { ok: false, error: error.message };
       return { ok: true };
     } catch (e: any) {
       return { ok: false, error: e.message || 'Eroare la autentificarea cu Google' };
