@@ -11,7 +11,7 @@ export default function NemoClawPage() {
 
       <div className="sticky top-0 z-10 flex items-center justify-end gap-4 border-b border-[#1a1a1a] bg-[#0a0a0a]/95 px-4 py-3 backdrop-blur sm:justify-between sm:pl-60">
         <span className="hidden text-sm font-black text-white sm:block">⚡ NemoClaw — Agent AI în sandbox securizat</span>
-        <a href="https://nemoclaw.daromania.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide NemoClaw →</a>
+        <a href="https://nemoclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide NemoClaw →</a>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
@@ -68,7 +68,7 @@ export default function NemoClawPage() {
           <h3 className="text-xl font-black text-white mb-5">⚡ Cum funcționează</h3>
           <div className="space-y-3">
             {[
-              ['1', 'Conectează-te', 'Accesează nemoclaw.daromania.online sau trimite un mesaj pe Telegram.'],
+              ['1', 'Conectează-te', 'Accesează nemoclaw.daeu.online sau trimite un mesaj pe Telegram.'],
               ['2', 'Descrie task-ul', 'Scrie în limbaj natural ce ai nevoie — cod, research, analiză, fișiere.'],
               ['3', 'NemoClaw execută', 'Agentul analizează, folosește tool-urile necesare și lucrează autonom în sandbox.'],
               ['4', 'Primești rezultatul', 'Cod testat, fișiere generate, rapoarte complete — totul securizat și gata de folosit.'],
@@ -120,7 +120,7 @@ export default function NemoClawPage() {
           <h3 className="text-3xl font-black text-black mb-2">Sandbox AI securizat, gata de acțiune</h3>
           <p className="text-black/70 font-bold text-lg mb-6">Zero config · Securitate maximă · Start instant</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://nemoclaw.daromania.online" target="_blank" rel="noopener noreferrer"
+            <a href="https://nemoclaw.daeu.online" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full font-black hover:bg-black/80 transition-all text-lg no-underline">
               Începe acum →
             </a>

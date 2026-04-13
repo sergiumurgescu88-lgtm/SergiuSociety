@@ -11,7 +11,7 @@ export default function SergiuClawPage() {
 
       <div className="sticky top-0 z-10 flex items-center justify-end gap-4 border-b border-[#1a1a1a] bg-[#0a0a0a]/95 px-4 py-3 backdrop-blur sm:justify-between sm:pl-60">
         <span className="hidden text-sm font-black text-white sm:block">🤖 SergiuClaw — Orchestrează-ți agenții AI</span>
-        <a href="https://sergiuclaw.daromania.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide SergiuClaw →</a>
+        <a href="https://paperclipclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide SergiuClaw →</a>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
@@ -114,7 +114,7 @@ export default function SergiuClawPage() {
           <h3 className="text-3xl font-black text-black mb-2">Gata să-ți orchestrezi agenții?</h3>
           <p className="text-black/70 font-bold text-lg mb-6">Cont gratuit · Setup în 5 minute · Fără card</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://sergiuclaw.daromania.online" target="_blank" rel="noopener noreferrer"
+            <a href="https://paperclipclaw.daeu.online" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full font-black hover:bg-black/80 transition-all text-lg no-underline">
               Deschide SergiuClaw →
             </a>

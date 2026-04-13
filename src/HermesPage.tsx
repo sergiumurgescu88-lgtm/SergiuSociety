@@ -11,7 +11,7 @@ export default function HermesPage() {
 
       <div className="sticky top-0 z-10 flex items-center justify-end gap-4 border-b border-[#1a1a1a] bg-[#0a0a0a]/95 px-4 py-3 backdrop-blur sm:justify-between sm:pl-60">
         <span className="hidden text-sm font-black text-white sm:block">🧠 HermesClaw — Agent AI Full-Stack</span>
-        <a href="https://hermes.daromania.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide HermesClaw →</a>
+        <a href="https://hermesclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-black bg-[#22c55e] px-3 py-2 rounded-full no-underline">Deschide HermesClaw →</a>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
@@ -68,7 +68,7 @@ export default function HermesPage() {
           <h3 className="text-xl font-black text-white mb-5">⚡ Cum funcționează</h3>
           <div className="space-y-3">
             {[
-              ['1', 'Trimite un task', 'Pe Telegram sau direct pe hermes.daromania.online — scrie în limbaj natural.'],
+              ['1', 'Trimite un task', 'Pe Telegram sau direct pe hermesclaw.daeu.online — scrie în limbaj natural.'],
               ['2', 'HermesClaw analizează', 'Selectează automat tool-urile și skill-urile necesare din cele 28+74 disponibile.'],
               ['3', 'Execuție autonomă', 'Lucrează independent — caută pe web, scrie cod, generează fișiere, face deploy.'],
               ['4', 'Primești rezultatul', 'Cod testat, rapoarte complete, fișiere generate — totul livrat direct.'],
@@ -120,7 +120,7 @@ export default function HermesPage() {
           <h3 className="text-3xl font-black text-black mb-2">Full-stack AI, gata de acțiune</h3>
           <p className="text-black/70 font-bold text-lg mb-6">28 tools · 74 skills · Telegram · Zero config</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://hermes.daromania.online" target="_blank" rel="noopener noreferrer"
+            <a href="https://hermesclaw.daeu.online" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full font-black hover:bg-black/80 transition-all text-lg no-underline">
               Pornește HermesClaw →
             </a>

@@ -50,7 +50,7 @@ const ChatBuddyPage = () => {
         </div>
         <div className="flex items-center gap-6">
           <a
-            href="https://pascupas.daromania.online"
+            href="https://buddy.daeu.online"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-lg text-sm font-semibold text-black transition-opacity hover:opacity-90"
@@ -92,7 +92,7 @@ const ChatBuddyPage = () => {
         {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="https://pascupas.daromania.online"
+            href="https://buddy.daeu.online"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 rounded-lg font-bold text-black text-lg transition-opacity hover:opacity-90 flex items-center gap-2"
@@ -135,7 +135,7 @@ const ChatBuddyPage = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://pascupas.daromania.online"
+              href="https://buddy.daeu.online"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-lg font-bold text-black text-lg transition-opacity hover:opacity-90 inline-flex items-center gap-2"

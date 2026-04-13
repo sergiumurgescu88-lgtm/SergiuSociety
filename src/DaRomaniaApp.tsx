@@ -68,7 +68,7 @@ const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const API_BASE = 'https://daromania.online';
 
 const callAI = async (prompt: string, system?: string, lucky?: boolean): Promise<string> => {
-  const res = await fetch(`${SUPABASE_URL}/functions/v1/chat`, {
+  const res = await fetch('https://daeu.online/api/chat', {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
@@ -3083,7 +3083,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#60a5fa', border: '1px solid #60a5fa33' }}>{t}</span>
                   ))}
                 </div>
-                <a href="https://sergiuclaw.daromania.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#60a5fa', border: '1px solid #60a5fa' }}>Deschide →</a>
+                <a href="https://paperclipclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#60a5fa', border: '1px solid #60a5fa' }}>Deschide →</a>
               </div>
               {/* NemoClaw */}
               <div className="rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col" style={{ background: '#0a0a0a', border: '2px solid #c084fc' }}>
@@ -3095,7 +3095,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#c084fc', border: '1px solid #c084fc33' }}>{t}</span>
                   ))}
                 </div>
-                <a href="https://nemoclaw.daromania.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#c084fc', border: '1px solid #c084fc' }}>Deschide →</a>
+                <a href="https://nemoclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#c084fc', border: '1px solid #c084fc' }}>Deschide →</a>
               </div>
               {/* Hermes */}
               <div className="rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col" style={{ background: '#0a0a0a', border: '2px solid #fbbf24' }}>
@@ -3107,7 +3107,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#fbbf24', border: '1px solid #fbbf2433' }}>{t}</span>
                   ))}
                 </div>
-                <a href="https://hermes.daromania.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#fbbf24', border: '1px solid #fbbf24' }}>Deschide →</a>
+                <a href="https://hermesclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#fbbf24', border: '1px solid #fbbf24' }}>Deschide →</a>
               </div>
             </div>
           </div>

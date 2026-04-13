@@ -26,7 +26,11 @@ const App = () => (
           <Route path="/hermesclaw" element={<HermesClaw />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Route path="/academy" element={<Academy />} />
+            <Route path="/afacerelacheie" element={<AfacereLaCheie />} />
+            <Route path="/arsenalapi" element={<ArsenalAPI />} />
+            <Route path="/chatbuddy" element={<ChatBuddy />} />
+          </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

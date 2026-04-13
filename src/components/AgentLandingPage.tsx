@@ -53,7 +53,7 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
             </Link>
           </div>
           <a
-            href="https://pascupas.daromania.online"
+            href="https://buddy.daeu.online"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -127,7 +127,7 @@ const AgentLandingPage = ({ config }: { config: AgentPageConfig }) => {
         {/* CTA Buttons */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 340, margin: "0 auto" }}>
           <a
-            href="https://pascupas.daromania.online"
+            href="https://buddy.daeu.online"
             target="_blank"
             rel="noopener noreferrer"
             style={{
