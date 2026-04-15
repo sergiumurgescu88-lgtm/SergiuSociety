@@ -1144,17 +1144,17 @@ export default function App() {
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsAgentsOpen(false)} />
                   <div className="absolute left-0 top-8 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px]">
-                    <button onClick={() => { window.location.href = "/openclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 OpenClaw</button>
-                    <button onClick={() => { window.location.href = "/paperclipclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">📎 PaperclipClaw</button>
-                    <button onClick={() => { window.location.href = "/nemoclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">⚡ NemoClaw</button>
-                    <button onClick={() => { window.location.href = "/hermesclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🧠 HermesClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/openclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 OpenClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/paperclipclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">📎 PaperclipClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/nemoclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">⚡ NemoClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/hermesclaw"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🧠 HermesClaw</button>
                   </div>
                 </>
               )}
             </div>
             <button onClick={() => { pushHistoryState(); nav("/academy"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🎓 Academy</button>
             <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">{t.nav_afacere}</button>
-            <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🤖 Vibe Buddy</button>
+            <button onClick={() => { pushHistoryState(); nav("/chatbuddy"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🤖 Vibe Buddy</button>
             
             {/* Auth Button Desktop */}
             {isAuthenticated ? (
@@ -1237,15 +1237,15 @@ export default function App() {
                 </button>
                 {isMobileAgentsOpen && (
                   <div className="pl-6 flex flex-col gap-1">
-                    <button onClick={() => { window.location.href = "/openclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 OpenClaw</button>
-                    <button onClick={() => { window.location.href = "/paperclipclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">📎 PaperclipClaw</button>
-                    <button onClick={() => { window.location.href = "/nemoclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">⚡ NemoClaw</button>
-                    <button onClick={() => { window.location.href = "/hermesclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🧠 HermesClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/openclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 OpenClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/paperclipclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">📎 PaperclipClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/nemoclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">⚡ NemoClaw</button>
+                    <button onClick={() => { pushHistoryState(); nav("/hermesclaw"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🧠 HermesClaw</button>
                   </div>
                 )}
                 <button onClick={() => { pushHistoryState(); nav("/academy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🎓 Academy</button>
                 <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">💼 Afacere la Cheie</button>
-                <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🤖 Vibe Buddy</button>
+                <button onClick={() => { pushHistoryState(); nav("/chatbuddy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🤖 Vibe Buddy</button>
                 <div className="border-t border-slate-100 mt-1 pt-2 flex gap-2">
                   {(['ro','en','es'] as Lang[]).map(l => (
                     <button key={l} onClick={() => { setLang(l); setIsMobileMenuOpen(false); }}
@@ -1342,7 +1342,7 @@ export default function App() {
 
               {/* CARD 2 — OpenClaw */}
               <div
-                onClick={() => { window.location.href = "/openclaw"; }}
+                onClick={() => { pushHistoryState(); nav("/openclaw"); }}
                 className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-green-200 bg-gradient-to-br from-green-50/80 to-white p-4 md:p-8 hover:shadow-2xl hover:border-green-400 transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
@@ -1875,7 +1875,7 @@ export default function App() {
               </button>
 
               {/* OpenClaw - $9 */}
-              <button onClick={() => { window.location.href = "/openclaw"; }} className="group relative border border-blue-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-blue-400 transition-all duration-300 hover:-translate-y-1 cursor-pointer text-left bg-white/60 backdrop-blur-sm flex flex-col">
+              <button onClick={() => { pushHistoryState(); nav("/openclaw"); }} className="group relative border border-blue-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-blue-400 transition-all duration-300 hover:-translate-y-1 cursor-pointer text-left bg-white/60 backdrop-blur-sm flex flex-col">
                 <div className="text-3xl mb-3">🤖</div>
                 <h3 className="text-base font-bold text-slate-900 mb-1">OpenClaw</h3>
                 <p className="text-slate-500 text-xs mb-4">Flota AI: CTO, CFO, CEO</p>
@@ -2336,72 +2336,6 @@ export default function App() {
         </section>
 
 
-        {/* BUDDY CTA — după generare pipeline */}
-        {pivotData && selectedJob && (
-          <section className="py-10 md:py-20 px-3 md:px-4 bg-gradient-to-br from-[#0a0a1a] to-[#0f0f2e]">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <div className="inline-block bg-indigo-500/20 border border-indigo-400/40 rounded-full px-4 py-1.5 text-xs font-bold text-indigo-300 mb-4 uppercase tracking-widest">🤖 Agentul tau personal AI</div>
-                <h2 className="text-2xl md:text-5xl font-black text-white mb-3">
-                  Buddy stie tot despre <span className="text-indigo-400">{selectedJob.title}</span><br/>si lucreaza non-stop pentru tine
-                </h2>
-                <p className="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto">Nu e un chatbot generic. E un agent antrenat exact pe strategia ta — cu pipeline-urile, modelele de business si planul de monetizare.</p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-                {[
-                  { icon: "💻", title: "Coding si Tech", desc: "Scrie cod, configureaza tool-uri, instaleaza API-uri fara sa stii programare" },
-                  { icon: "📣", title: "Marketing", desc: "Reclame, email sequences, copywriting adaptat nissei tale" },
-                  { icon: "💰", title: "Side Hustle", desc: "De la zero la primul €1000 online cu actiuni concrete zilnice" },
-                  { icon: "⚙️", title: "Setup Complet", desc: "Stripe, site, newsletter, Telegram bot, SaaS — totul gata de launch" },
-                  { icon: "📊", title: "Business Plan", desc: "Proiectii financiare, pricing si pitch-uri pentru clienti" },
-                  { icon: "🎯", title: "Sales Script", desc: "DM-uri, cold email si raspunsuri la obiectii personalizate" },
-                  { icon: "🤖", title: "AI Workflows", desc: "Automatizeaza cu Make, Zapier, n8n — pas cu pas" },
-                  { icon: "📱", title: "Social Media", desc: "Continut pentru LinkedIn, YouTube, TikTok aliniat strategiei tale" },
-                ].map((item) => (
-                  <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all">
-                    <div className="text-2xl mb-2">{item.icon}</div>
-                    <div className="text-white font-bold text-sm mb-1">{item.title}</div>
-                    <div className="text-slate-400 text-xs leading-relaxed">{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-white/5 border border-indigo-400/20 rounded-2xl p-5 mb-6">
-                <p className="text-indigo-300 text-xs font-bold uppercase tracking-widest mb-3">Exemplu concret pentru {selectedJob.title}</p>
-                <div className="grid md:grid-cols-3 gap-3">
-                  <div className="bg-indigo-950/50 rounded-xl p-3">
-                    <p className="text-white font-semibold text-sm mb-1">Tu intrebi:</p>
-                    <p className="text-slate-400 text-xs">"Cum lansez primul meu produs digital saptamana asta?"</p>
-                  </div>
-                  <div className="bg-indigo-950/50 rounded-xl p-3">
-                    <p className="text-white font-semibold text-sm mb-1">Buddy raspunde:</p>
-                    <p className="text-slate-400 text-xs">Plan zilnic 7 zile, tool-uri exacte, template-uri gata de folosit</p>
-                  </div>
-                  <div className="bg-indigo-950/50 rounded-xl p-3">
-                    <p className="text-white font-semibold text-sm mb-1">Rezultat:</p>
-                    <p className="text-slate-400 text-xs">Produs live, pagina de vanzare activa, primele comenzi in 7 zile</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                <a
-                  href="https://buy.stripe.com/bJe14o1Ht3ZCamfedh5os00"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-indigo-500 hover:bg-indigo-400 text-white font-black px-10 py-5 rounded-2xl text-lg transition-all hover:scale-105 shadow-xl shadow-indigo-900/50 no-underline"
-                >
-                  🤖 Activeaza Buddy Personal — $9/luna
-                </a>
-                <button
-                  onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
-                  className="inline-flex items-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold px-6 py-5 rounded-2xl text-sm transition-all"
-                >
-                  Testeaza gratuit 30 mesaje
-                </button>
-              </div>
-              <p className="text-slate-600 text-xs text-center mt-4">Fara contract • Cancel oricand • Toate strategiile tale preincarcate</p>
-            </div>
-          </section>
-        )}
         {/* 5 Business Idea Cards - before pricing */}
         <AnimatePresence>
           {pivotData && selectedJob && (
@@ -2443,47 +2377,6 @@ export default function App() {
             </section>
           )}
         </AnimatePresence>
-
-        {/* BUDDY CTA JOS — context complet job */}
-        {pivotData && selectedJob && (
-          <section className="py-10 md:py-20 px-3 md:px-4 bg-white border-t border-slate-100">
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl md:rounded-3xl p-6 md:p-12 flex flex-col md:flex-row gap-6 md:gap-10 items-center">
-                <div className="flex-1 text-center md:text-left">
-                  <div className="text-3xl mb-3">🤖</div>
-                  <h3 className="text-xl md:text-3xl font-black text-white mb-2">
-                    Buddy știe tot despre <span className="text-indigo-400">{selectedJob.title}</span>
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                    Agentul tău personal are preîncărcate toate cele 5 modele de business, pipeline-urile de monetizare și strategia completă generată pentru profilul tău. Îi pui o întrebare, el îți dă comenzi exacte copy-paste.
-                  </p>
-                  <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                    {["Media Empire", "SaaS Expert", "Produs Digital", "Academia Online", "6 Agenți AI"].map((m) => (
-                      <span key={m} className="text-xs bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 px-3 py-1 rounded-full font-semibold">{m}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex flex-col gap-3 items-center min-w-[220px]">
-                  
-                    <a href="https://buy.stripe.com/bJe14o1Ht3ZCamfedh5os00"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full text-center bg-indigo-500 hover:bg-indigo-400 text-white font-black px-6 py-4 rounded-xl text-base transition-all hover:scale-105 no-underline shadow-lg shadow-indigo-900/40"
-                  >
-                    🚀 Activează — $9/lună
-                  </a>
-                  <button
-                    onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
-                    className="w-full text-center bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all"
-                  >
-                    Testează gratuit
-                  </button>
-                  <p className="text-slate-600 text-xs text-center">Cancel oricând • Fără contract</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* PRICING SECTION */}
         <section ref={pricingRef} className="py-24 md:py-32 bg-slate-900 text-white snap-start px-4 relative overflow-hidden">
@@ -3190,7 +3083,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#60a5fa', border: '1px solid #60a5fa33' }}>{t}</span>
                   ))}
                 </div>
-                <a href="/paperclipclaw" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#60a5fa', border: '1px solid #60a5fa' }}>Deschide →</a>
+                <a href="https://paperclipclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#60a5fa', border: '1px solid #60a5fa' }}>Deschide →</a>
               </div>
               {/* NemoClaw */}
               <div className="rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col" style={{ background: '#0a0a0a', border: '2px solid #c084fc' }}>
@@ -3202,7 +3095,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#c084fc', border: '1px solid #c084fc33' }}>{t}</span>
                   ))}
                 </div>
-                <a href="/nemoclaw" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#c084fc', border: '1px solid #c084fc' }}>Deschide →</a>
+                <a href="https://nemoclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#c084fc', border: '1px solid #c084fc' }}>Deschide →</a>
               </div>
               {/* Hermes */}
               <div className="rounded-xl md:rounded-2xl p-4 md:p-8 flex flex-col" style={{ background: '#0a0a0a', border: '2px solid #fbbf24' }}>
@@ -3214,7 +3107,7 @@ export default function App() {
                     <span key={t} className="text-[10px] md:text-xs px-2 py-0.5 md:px-3 md:py-1 rounded-full" style={{ color: '#fbbf24', border: '1px solid #fbbf2433' }}>{t}</span>
                   ))}
                 </div>
-                <a href="/hermesclaw" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#fbbf24', border: '1px solid #fbbf24' }}>Deschide →</a>
+                <a href="https://hermesclaw.daeu.online" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs md:text-sm font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-xl w-fit transition-colors no-underline" style={{ color: '#fbbf24', border: '1px solid #fbbf24' }}>Deschide →</a>
               </div>
             </div>
           </div>

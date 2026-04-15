@@ -29,7 +29,6 @@ const App = () => (
           <Route path="/academy" element={<Academy />} />
             <Route path="/afacerelacheie" element={<AfacereLaCheie />} />
             <Route path="/arsenalapi" element={<ArsenalAPI />} />
-            <Route path="/chatbuddy" element={<ChatBuddy />} />
           </Routes>
       </BrowserRouter>
     </TooltipProvider>
