@@ -1618,29 +1618,52 @@ export default function App() {
                 </div>
               </div>
 
-              {/* CARD 2 — OpenClaw */}
+              {/* CARD 2 — VibeBuddy */}
               <div
-                onClick={() => { window.location.href = "/openclaw"; }}
-                className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-green-200 bg-gradient-to-br from-green-50/80 to-white p-4 md:p-8 hover:shadow-2xl hover:border-green-400 transition-all duration-300"
+                onClick={() => window.open('https://referral.dausa.online/', '_blank')}
+                className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/80 to-purple-50/60 p-4 md:p-8 hover:shadow-2xl hover:border-violet-400 transition-all duration-300 relative"
               >
-                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                <span className="absolute -top-3 left-4 md:left-8 bg-violet-600 text-white text-[10px] md:text-xs font-bold px-3 py-0.5 md:px-4 md:py-1 rounded-full">🟢 DISPONIBIL ACUM</span>
+                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 mt-2">
                   <div className="flex-shrink-0 text-3xl md:text-5xl">🤖</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 flex-wrap">
-                      <h3 className="text-base md:text-2xl font-black text-slate-900">OpenClaw AI</h3>
-                      <span className="bg-green-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full">$19/lună</span>
+                      <h3 className="text-base md:text-2xl font-black text-slate-900">VibeBuddy — AI care nu doar răspunde. Construiește.</h3>
+                      <span className="bg-violet-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full">$9/lună</span>
                     </div>
                     <p className="text-slate-600 text-xs md:text-base leading-relaxed mb-3 md:mb-4">
-                      <strong>Agent AI personal</strong> 24/7 — emailuri, cod, WhatsApp, Telegram, calendar, research. <strong>3 agenți AI</strong> (CTO, CFO, CEO) non-stop. <strong>Anulezi oricând.</strong>
+                      <strong>4 modele AI într-un singur chat.</strong> Îți construiește proiecte complete în timp real, pas cu pas — în stil VibeCoding. <strong>Mesaje nelimitate.</strong>
                     </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3 md:mb-4">
+                      <div className="bg-violet-100 rounded-xl p-2 md:p-3 text-center">
+                        <div className="text-[9px] md:text-xs font-bold text-violet-500 uppercase mb-0.5">gândire profundă</div>
+                        <div className="text-[10px] md:text-sm font-black text-slate-900">Claude Sonnet 4.6</div>
+                        <div className="text-[9px] md:text-xs text-slate-500">Analiză, strategie, cod</div>
+                      </div>
+                      <div className="bg-blue-100 rounded-xl p-2 md:p-3 text-center">
+                        <div className="text-[9px] md:text-xs font-bold text-blue-500 uppercase mb-0.5">vibecoding</div>
+                        <div className="text-[10px] md:text-sm font-black text-slate-900">OpenAI Codex</div>
+                        <div className="text-[9px] md:text-xs text-slate-500">Proiecte complete, deploy</div>
+                      </div>
+                      <div className="bg-green-100 rounded-xl p-2 md:p-3 text-center">
+                        <div className="text-[9px] md:text-xs font-bold text-green-500 uppercase mb-0.5">multimodal</div>
+                        <div className="text-[10px] md:text-sm font-black text-slate-900">GPT-4o</div>
+                        <div className="text-[9px] md:text-xs text-slate-500">Copywriting, imagini</div>
+                      </div>
+                      <div className="bg-orange-100 rounded-xl p-2 md:p-3 text-center">
+                        <div className="text-[9px] md:text-xs font-bold text-orange-500 uppercase mb-0.5">date live</div>
+                        <div className="text-[10px] md:text-sm font-black text-slate-900">xAI Grok</div>
+                        <div className="text-[9px] md:text-xs text-slate-500">Tendințe, date real-time</div>
+                      </div>
+                    </div>
                     <div className="flex flex-wrap gap-1.5 md:gap-3">
-                      <span className="bg-green-100 text-green-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Agent 24/7</span>
-                      <span className="bg-green-100 text-green-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ WhatsApp + Telegram</span>
-                      <span className="bg-green-100 text-green-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Execuție automată</span>
-                      <span className="bg-green-100 text-green-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Anulezi oricând</span>
+                      <span className="bg-violet-100 text-violet-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Mesaje nelimitate</span>
+                      <span className="bg-violet-100 text-violet-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ 4 modele AI</span>
+                      <span className="bg-violet-100 text-violet-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ VibeCoding complet</span>
+                      <span className="bg-violet-100 text-violet-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Suport WhatsApp</span>
                     </div>
                   </div>
-                  <span className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+                  <span className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-violet-100 text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-all">
                     <ArrowRight className="w-5 h-5" />
                   </span>
                 </div>
