@@ -1703,6 +1703,34 @@ export default function App() {
                 </div>
               </div>
 
+              {/* CARD 6 — Referral DaUSA */}
+              <div
+                onClick={() => window.open('https://referral.dausa.online/', '_blank')}
+                className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50/80 to-green-50/60 p-4 md:p-8 hover:shadow-2xl hover:border-emerald-400 transition-all duration-300"
+              >
+                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                  <div className="flex-shrink-0 text-3xl md:text-5xl">🤝</div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2 flex-wrap">
+                      <h3 className="text-base md:text-2xl font-black text-slate-900">Program Referral DaUSA</h3>
+                      <span className="bg-emerald-600 text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full">CÂȘTIGĂ COMISION</span>
+                    </div>
+                    <p className="text-slate-600 text-xs md:text-base leading-relaxed mb-3 md:mb-4">
+                      Recomandă DaUSA prietenilor și câștigă <strong>comision recurent</strong> pentru fiecare client adus. Sistem automat de tracking, plăți lunare și <strong>dashboard dedicat</strong> cu statistici în timp real.
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 md:gap-3">
+                      <span className="bg-emerald-100 text-emerald-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Comision recurent</span>
+                      <span className="bg-emerald-100 text-emerald-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Tracking automat</span>
+                      <span className="bg-emerald-100 text-emerald-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Plăți lunare</span>
+                      <span className="bg-emerald-100 text-emerald-700 text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 rounded-full">✅ Dashboard dedicat</span>
+                    </div>
+                  </div>
+                  <span className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                    <ArrowRight className="w-5 h-5" />
+                  </span>
+                </div>
+              </div>
+
             </div>
             
             <div className="flex items-center justify-center gap-3">
