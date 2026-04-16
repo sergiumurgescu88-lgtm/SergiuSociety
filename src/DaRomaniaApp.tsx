@@ -271,77 +271,90 @@ const buildUniversalBusinessPipelines = (jobTitle: string, context: {q1: string,
 > **Freelancer** → agenție → SaaS platform`,
   monetizationProjects: [
     {
-      title: `${jobTitle} Premium Services`,
-      description: `Servicii premium pentru ${jobTitle} bazate pe expertiza existentă.`,
-      platform: "LinkedIn / Direct Sales",
-      marketingStrategy: "Lead generation + content authority",
-      innovation: "AI assisted workflow",
-      projectType: "Service Business",
-      monetizationMethod: "Retainer",
-      suitabilityQuestions: ["Îți place lucrul direct cu clienți?", "Poți scala procesul?"]
+      title: `${jobTitle} Freelance Side Hustle`,
+      description: `Transformă skill-ul tău în servicii rapide pentru clienți.
+Ce faci:
+- servicii 1:1
+- audit
+- consultanță
+- implementare rapidă
+
+Monetizare:
+€300–€1500 / client
+sau abonament lunar €500+`,
+      platform: "LinkedIn + WhatsApp + Direct Sales",
+      marketingStrategy: "DM outreach + personal brand",
+      innovation: "AI assisted delivery",
+      projectType: "Side Hustle",
+      monetizationMethod: "Per client + monthly retainer",
+      suitabilityQuestions: ["Poți livra rapid?", "Ai skill aplicabil?"]
     },
     {
-      title: `${jobTitle} Digital Products`,
-      description: `Construiește produse digitale monetizabile:
-- template premium
-- calculator/toolkit
-- dashboard SaaS
-- prompt packs
-- abonament lunar.
-Funnel: trafic organic → landing page → lead magnet → email nurture → vânzare.
-Țintă 6 luni: €5000+ MRR.`,
-      platform: "Website",
-      marketingStrategy: "SEO + funnel",
-      innovation: "Automation",
-      projectType: "Digital Product",
-      monetizationMethod: "One time + subscription",
-      suitabilityQuestions: ["Poți documenta know-how-ul?", "Poți standardiza procese?"]
+      title: `${jobTitle} Productized Service`,
+      description: `Pachete fixe și ușor de vândut.
+Ex:
+Starter / Growth / Premium
+
+Monetizare:
+€99 / €299 / €999
+Upsell lunar pentru suport și mentenanță.`,
+      platform: "Landing Page + Stripe",
+      marketingStrategy: "Offer funnel",
+      innovation: "AI automation",
+      projectType: "Productized Service",
+      monetizationMethod: "Package sales",
+      suitabilityQuestions: ["Poți standardiza livrarea?", "Poți lucra pe template?"]
     },
     {
-      title: `${jobTitle} Academy`,
-      description: `Academie premium:
-- curs flagship
-- cohortă live
-- mentorat 1:1
-- mastermind
-- certificare.
-Monetizare pe 3 niveluri:
-€99 / €499 / €1999.
-Scalare prin YouTube + webinar funnel.`,
-      platform: "YouTube + Course Platform",
-      marketingStrategy: "Educational content",
-      innovation: "Hybrid AI learning",
-      projectType: "Education",
-      monetizationMethod: "Course sales",
-      suitabilityQuestions: ["Îți place să predai?", "Poți crea curriculum?"]
+      title: `${jobTitle} AI Automation Hustle`,
+      description: `Automatizezi procese repetitive pentru business-uri.
+Ex:
+- lead gen
+- WhatsApp
+- follow-up
+- CRM
+
+Monetizare:
+setup €500–€3000
++ mentenanță €200–€1000 / lună`,
+      platform: "n8n + VPS + CRM",
+      marketingStrategy: "B2B outreach",
+      innovation: "AI agents + workflows",
+      projectType: "Automation Business",
+      monetizationMethod: "Setup + subscription",
+      suitabilityQuestions: ["Poți automatiza procese?", "Înțelegi business flow?"]
     },
     {
-      title: `${jobTitle} YouTube Channel`,
-      description: `Canal YouTube construit ca asset de business:
-Shorts → long-form → lead funnel → sponsori → afiliere → produse proprii.
-Obiectiv:
-100k views/lună în 90 zile.
-Venit:
-AdSense + sponsorship + course funnel + consulting.`,
-      platform: "YouTube",
-      marketingStrategy: "Shorts + long form",
-      innovation: "AI content research",
-      projectType: "Media",
-      monetizationMethod: "AdSense + sponsors",
-      suitabilityQuestions: ["Poți produce video constant?", "Ai storytelling?"]
+      title: `${jobTitle} Content Monetization`,
+      description: `Construiești audiență și monetizezi conținutul.
+Ex:
+YouTube / TikTok / LinkedIn
+
+Monetizare:
+AdSense + afiliere + sponsori + leads
+€500–€5000 / lună`,
+      platform: "YouTube + TikTok",
+      marketingStrategy: "Short-form content",
+      innovation: "AI content production",
+      projectType: "Content Side Hustle",
+      monetizationMethod: "Ads + affiliate + leads",
+      suitabilityQuestions: ["Poți crea content?", "Poți posta constant?"]
     },
     {
-      title: `${jobTitle} Scalable Agency`,
-      description: `Scalare reală în business mare:
-freelancer → micro agency → standardizare SOP → echipă → SaaS layer.
-Venit țintă 12 luni:
-€15k–€50k / lună.`,
-      platform: "Website + CRM",
-      marketingStrategy: "Outbound + authority",
-      innovation: "AI automation pipelines",
-      projectType: "Agency",
-      monetizationMethod: "Retainer + SaaS",
-      suitabilityQuestions: ["Poți conduce echipe?", "Poți standardiza livrarea?"]
+      title: `${jobTitle} Micro SaaS`,
+      description: `Construiești un tool simplu care rezolvă o problemă specifică.
+Ex:
+calculator / dashboard / generator / CRM mini
+
+Monetizare:
+€9–€49 / lună / user
+scalabil global`,
+      platform: "Web App + Stripe",
+      marketingStrategy: "SEO + communities",
+      innovation: "AI SaaS",
+      projectType: "Micro SaaS",
+      monetizationMethod: "MRR subscription",
+      suitabilityQuestions: ["Poți identifica o problemă clară?", "Poți valida rapid?"]
     }
   ]
 });
@@ -389,6 +402,185 @@ interface Message {
   text: string;
 }
 
+
+const runBuddyExecutor = async (command: string) => {
+  const res = await fetch("http://localhost:8091/run", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ command })
+  });
+
+  return await res.json();
+};
+
+
+const createBuddyPage = async (pageName: string, title: string, subtitle: string) => {
+  const res = await fetch("http://localhost:8091/create-page", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      page_name: pageName,
+      title,
+      subtitle
+    })
+  });
+
+  return await res.json();
+};
+
+
+const detectOpsCommand = async (message: string) => {
+  
+const text = message.toLowerCase();
+
+const builderResponse = await runBuddySiteBuilder(message);
+
+if (builderResponse) {
+  setMessages(prev => [
+    ...prev,
+    { role: 'user', text: message },
+    { role: 'model', text: builderResponse }
+  ]);
+  return;
+}
+
+
+
+  if (text.includes("create landing page")) {
+    return await createBuddyPage(
+      "LandingPageAuto",
+      "Landing Page Premium",
+      "Pagină generată automat de Buddy pentru conversie și lead generation"
+    );
+  }
+
+  if (text.includes("create funnel page")) {
+    return await createBuddyPage(
+      "FunnelPageAuto",
+      "Sales Funnel Premium",
+      "Funnel automat pentru monetizare, upsell și conversie"
+    );
+  }
+
+  if (text.includes("create product page")) {
+    return await createBuddyPage(
+      "ProductPageAuto",
+      "Product Premium",
+      "Pagină produs generată automat pentru vânzări"
+    );
+  }
+
+
+  if (text.includes("server status") || text.includes("status")) {
+    return await runBuddyExecutor("pm2 list");
+  }
+
+  if (text.includes("restart website") || text.includes("restart site")) {
+    return await runBuddyExecutor("restart_daromania");
+  }
+
+  if (text.includes("restart buddy")) {
+    return await runBuddyExecutor("restart_buddy");
+  }
+
+  if (text.includes("restart all")) {
+    return await runBuddyExecutor("restart_all");
+  }
+
+  if (text.includes("rebuild site") || text.includes("build")) {
+    return await runBuddyExecutor("build_site");
+  }
+
+  if (text.includes("deploy latest") || text.includes("deploy")) {
+    return await runBuddyExecutor("deploy_latest");
+  }
+
+  if (text.includes("logs")) {
+    return await runBuddyExecutor("show_logs");
+  }
+
+  if (text.includes("show errors") || text.includes("errors")) {
+    return await runBuddyExecutor("show_errors");
+  }
+
+  if (text.includes("disk usage")) {
+    return await runBuddyExecutor("disk_usage");
+  }
+
+  if (text.includes("project health") || text.includes("health")) {
+    return await runBuddyExecutor("project_health");
+  }
+
+  if (
+    text.includes("restart site") ||
+    text.includes("restart website") ||
+    text.includes("restart daromania")
+  ) {
+    return await runBuddyExecutor("pm2 restart daromania");
+  }
+
+  if (text.includes("restart buddy")) {
+    return await runBuddyExecutor("pm2 restart buddy");
+  }
+
+  if (
+    text.includes("status") ||
+    text.includes("pm2") ||
+    text.includes("server status")
+  ) {
+    return await runBuddyExecutor("pm2 list");
+  }
+
+  if (
+    text.includes("build") ||
+    text.includes("deploy")
+  ) {
+    return await runBuddyExecutor("npm run build");
+  }
+
+  return null;
+};
+
+
+
+const runBuddySiteBuilder = async (message: string) => {
+  const text = message.toLowerCase();
+
+  if (
+    text.includes("site") ||
+    text.includes("website") ||
+    text.includes("landing page") ||
+    text.includes("funnel") ||
+    text.includes("pagina")
+  ) {
+    try {
+      const res = await fetch("http://localhost:8091/create-page", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          page_name: "BusinessLandingPage",
+          title: "Business Premium Website",
+          subtitle: message
+        })
+      });
+
+      const data = await res.json();
+
+      return `🚀 Site generat automat cu succes!\n📄 Fișier: ${data.file}\n\nRulez build și deploy imediat.`;
+    } catch (e) {
+      return "❌ Eroare la generarea paginii.";
+    }
+  }
+
+  return null;
+};
+
 function ChatAgent({ job, onClose }: { job: JobData, onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
@@ -420,6 +612,18 @@ function ChatAgent({ job, onClose }: { job: JobData, onClose: () => void }) {
   }, [messages, job.id]);
 
   const handleSendText = async () => {
+    const builderResponse = await runBuddySiteBuilder(inputText);
+
+    if (builderResponse) {
+      setMessages(prev => [
+        ...prev,
+        { role: 'user', text: inputText },
+        { role: 'model', text: builderResponse }
+      ]);
+      setInputText('');
+      return;
+    }
+
     if (!inputText.trim() || isLoading) return;
     const newMessages = [...messages, { role: 'user' as const, text: inputText }];
     setMessages(newMessages);
@@ -436,7 +640,19 @@ function ChatAgent({ job, onClose }: { job: JobData, onClose: () => void }) {
       const response = await callAI(userMessage);
 
       if (response) {
-        setMessages(prev => [...prev, { role: 'model', text: response }]);
+        
+    const builderResponse = await runBuddySiteBuilder(input || userInput || message || '');
+
+    if (builderResponse) {
+      setMessages(prev => [
+        ...prev,
+        { role: 'model', text: builderResponse }
+      ]);
+      if (typeof setInput === 'function') setInput('');
+      return;
+    }
+
+setMessages(prev => [...prev, { role: 'model', text: response }]);
       }
     } catch (e) {
       console.error(e);
@@ -673,6 +889,63 @@ const RadarChart = ({ job }: { job: any }) => {
       </div>
     </div>
   );
+};
+
+const VibeBuddyBg = () => {
+  const cvs = React.useRef<HTMLCanvasElement>(null);
+  React.useEffect(() => {
+    const el = cvs.current; if (!el) return;
+    const ctx = el.getContext('2d'); if (!ctx) return;
+    const par = el.parentElement!;
+    const resize = () => { el.width = par.offsetWidth; el.height = par.offsetHeight; };
+    resize(); window.addEventListener('resize', resize);
+    type P = {x:number;y:number;vx:number;vy:number;sz:number;op:number;ang:number;dang:number};
+    const W = () => el.width, H = () => el.height;
+    const pts: P[] = Array.from({length:28}, () => ({
+      x: Math.random()*(el.width||900),
+      y: Math.random()*(el.height||700),
+      vx: (Math.random()-.5)*.12,
+      vy: (Math.random()-.5)*.12,
+      sz: 20+Math.random()*28,
+      op: 0.18+Math.random()*0.22,
+      ang: Math.random()*Math.PI*2,
+      dang: (Math.random()-.5)*.002,
+    }));
+    const ICONS = [
+      "M10,3 L14,3 L14,7 L10,7 Z M7,7 L17,7 L18,18 L6,18 Z M9,18 L9,22 L15,22 L15,18",
+      "M3,20 L21,20 M7,20 L7,11 L10,11 L10,20 M11,20 L11,6 L14,6 L14,20 M15,20 L15,14 L18,14 L18,20",
+      "M12,9 A3,3 0 1,0 12.01,9 M12,2 L12,5 M12,19 L12,22 M2,12 L5,12 M19,12 L22,12",
+      "M8,6 L3,12 L8,18 M16,6 L21,12 L16,18 M14,4 L10,20",
+      "M3,3 L21,3 L21,15 L3,15 Z M3,19 L7,15 M21,19 L17,15 M12,15 L12,19 M8,19 L16,19",
+      "M12,2 L15.09,8.26 L22,9.27 L17,14.14 L18.18,21.02 L12,17.77 L5.82,21.02 L7,14.14 L2,9.27 L8.91,8.26 Z",
+    ];
+    const paths = ICONS.map(d => { const p = new Path2D(); d.split('M').filter(Boolean).forEach(seg => { const full = 'M'+seg; p.addPath(new Path2D(full)); }); return p; });
+    let raf: number;
+    const draw = () => {
+      ctx.clearRect(0,0,W(),H());
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.ang += p.dang;
+        if(p.x<-30) p.x=W()+30; if(p.x>W()+30) p.x=-30;
+        if(p.y<-30) p.y=H()+30; if(p.y>H()+30) p.y=-30;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.ang);
+        ctx.scale(p.sz/24, p.sz/24);
+        ctx.translate(-12,-12);
+        ctx.strokeStyle = `rgba(255,255,255,${p.op})`;
+        ctx.lineWidth = 1.2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        const pi = Math.floor(Math.abs(p.x+p.y))%paths.length;
+        ctx.stroke(paths[pi]);
+        ctx.restore();
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+  }, []);
+  return <canvas ref={cvs} style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:0}} />;
 };
 
 export default function App() {
@@ -1131,6 +1404,7 @@ export default function App() {
           
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a href="https://referral.dausa.online/" target="_blank" className="text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</a>
             {/* Agenți Dropdown */}
             <div className="relative">
               <button
@@ -1144,6 +1418,7 @@ export default function App() {
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsAgentsOpen(false)} />
                   <div className="absolute left-0 top-8 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px]">
+                    <button onClick={() => { window.open("https://referral.dausa.online/", "_blank"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 Vibe Buddy</button>
                     <button onClick={() => { window.location.href = "/openclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 OpenClaw</button>
                     <button onClick={() => { window.location.href = "/paperclipclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">📎 PaperclipClaw</button>
                     <button onClick={() => { window.location.href = "/nemoclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">⚡ NemoClaw</button>
@@ -1230,6 +1505,8 @@ export default function App() {
               className="md:hidden bg-white border-b border-slate-200 overflow-hidden"
             >
               <div className="px-3 py-4 flex flex-col gap-2">
+                {/* Buddy CTA buton verde */}
+                <button onClick={() => { window.open("https://referral.dausa.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-white py-2.5 px-3 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</button>
                 {/* Agenți dropdown mobile */}
                 <button onClick={() => setIsMobileAgentsOpen(!isMobileAgentsOpen)} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200 flex items-center justify-between">
                   🤖 Agenți
@@ -1241,6 +1518,7 @@ export default function App() {
                     <button onClick={() => { window.location.href = "/paperclipclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">📎 PaperclipClaw</button>
                     <button onClick={() => { window.location.href = "/nemoclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">⚡ NemoClaw</button>
                     <button onClick={() => { window.location.href = "/hermesclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🧠 HermesClaw</button>
+                    <button onClick={() => { window.open("https://referral.dausa.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 Buddy</button>
                   </div>
                 )}
                 <button onClick={() => { pushHistoryState(); nav("/academy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🎓 Academy</button>
@@ -1451,6 +1729,110 @@ export default function App() {
               <div className="w-px h-12 bg-gradient-to-b from-indigo-600 to-transparent" />
             </motion.div>
           </motion.div>
+        </section>
+
+
+        {/* VibeBuddy Section */}
+        <section className="min-h-screen flex flex-col items-center justify-center snap-start py-20 px-4 sm:px-6 lg:px-8 relative" style={{background:'linear-gradient(180deg,#030508 0%,#070b10 100%)',position:'relative',overflow:'hidden'}}>
+          <div className="absolute top-0 left-0 right-0 h-px" style={{background:'linear-gradient(90deg,transparent,rgba(0,255,135,0.4),transparent)'}} />
+          <VibeBuddyBg />
+          <div className="max-w-2xl mx-auto w-full" style={{position:"relative",zIndex:1}}>
+            {/* Badge */}
+            <div style={{display:'inline-flex',alignItems:'center',gap:'6px',fontSize:'12px',fontWeight:500,padding:'4px 12px',borderRadius:'8px',background:'rgba(0,255,135,0.1)',color:'#00ff87',border:'1px solid rgba(0,255,135,0.2)',marginBottom:'1rem'}}>
+              <span style={{width:6,height:6,borderRadius:'50%',background:'#00ff87',display:'inline-block'}} /> disponibil acum
+            </div>
+            {/* Hero */}
+            <h2 style={{fontSize:'clamp(24px,4vw,34px)',fontWeight:500,lineHeight:1.25,color:'#e8edf2',marginBottom:'0.5rem'}}>
+              VibeBuddy — AI care nu<br/>doar răspunde. <span style={{color:'#00ff87'}}>Construiește.</span>
+            </h2>
+            <p style={{fontSize:'15px',color:'#6b7a8d',lineHeight:1.6,marginBottom:'2rem'}}>
+              4 modele AI într-un singur chat. Îți construiește proiecte complete în timp real, pas cu pas — în stil VibeCoding. $9/lună, mesaje nelimitate.
+            </p>
+            {/* Models Grid */}
+            <p style={{fontSize:'11px',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',color:'#4a5568',marginBottom:'0.75rem'}}>cele 4 modele incluse</p>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'10px',marginBottom:'2rem'}}>
+              {[
+                {chip:'gândire profundă',chipStyle:{background:'rgba(168,85,247,0.15)',color:'#c084fc'},name:'Claude Sonnet 4.6',use:'Analiză, strategie, cod complex'},
+                {chip:'vibecoding',chipStyle:{background:'rgba(0,212,255,0.12)',color:'#00d4ff'},name:'OpenAI Codex',use:'Proiecte complete, agenți AI, deploy'},
+                {chip:'multimodal',chipStyle:{background:'rgba(255,184,0,0.12)',color:'#ffb800'},name:'GPT-4o',use:'Copywriting, brainstorming, imagini'},
+                {chip:'date live',chipStyle:{background:'rgba(0,255,135,0.1)',color:'#00ff87'},name:'xAI Grok',use:'Tendințe, idei, date în timp real'},
+              ].map((m,i) => (
+                <div key={i} style={{background:'rgba(255,255,255,0.03)',border:'0.5px solid rgba(255,255,255,0.07)',borderRadius:'12px',padding:'14px 12px'}}>
+                  <span style={{...m.chipStyle,fontSize:'10px',fontWeight:500,padding:'2px 8px',borderRadius:'99px',marginBottom:'10px',display:'inline-block'}}>{m.chip}</span>
+                  <div style={{fontSize:'13px',fontWeight:500,color:'#e8edf2',marginBottom:'3px'}}>{m.name}</div>
+                  <div style={{fontSize:'11px',color:'#6b7a8d',lineHeight:1.4}}>{m.use}</div>
+                </div>
+              ))}
+            </div>
+            {/* Flow Steps */}
+            <p style={{fontSize:'11px',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',color:'#4a5568',marginBottom:'0.75rem'}}>flowul vibecoding</p>
+            <div style={{display:'flex',flexDirection:'column',gap:0,marginBottom:'2rem'}}>
+              {[
+                {n:'1',title:'Scrii ce vrei să construiești',desc:'Natural, în română sau engleză. Fără experiență tehnică necesară.',tag:'zero configurare',active:true},
+                {n:'2',title:'Smart Switch selectează modelul potrivit',desc:'Buddy detectează automat intenția și activează combinația optimă de modele.',tag:'automat, fără input',active:true},
+                {n:'3',title:'Buddy construiește pas cu pas, live',desc:'Proiectul complet: structură fișiere, dependențe, configurații, deploy instructions.',tag:'vibecoding style',active:true},
+                {n:'4',title:'Livrezi și iterezi fără să schimbi tab-ul',desc:'De la idee la URL live, tot în același chat. Buddy știe tot ce s-a construit.',tag:'de la idee la deploy',active:false},
+              ].map((s,i,arr) => (
+                <div key={i} style={{display:'flex',gap:'16px',position:'relative'}}>
+                  <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                    <div style={{width:32,height:32,borderRadius:'50%',border:`0.5px solid ${s.active?'rgba(0,255,135,0.4)':'rgba(255,255,255,0.07)'}`,background:s.active?'rgba(0,255,135,0.1)':'rgba(255,255,255,0.03)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'13px',fontWeight:500,color:s.active?'#00ff87':'#6b7a8d',flexShrink:0,zIndex:1}}>{s.n}</div>
+                    {i<arr.length-1 && <div style={{width:'0.5px',flex:1,background:'rgba(255,255,255,0.07)',margin:'2px 0'}} />}
+                  </div>
+                  <div style={{padding:'4px 0 20px',flex:1}}>
+                    <div style={{fontSize:'14px',fontWeight:500,color:'#e8edf2',marginBottom:'4px'}}>{s.title}</div>
+                    <div style={{fontSize:'13px',color:'#6b7a8d',lineHeight:1.5}}>{s.desc}</div>
+                    <span style={{display:'inline-block',marginTop:'6px',fontSize:'11px',fontWeight:500,padding:'2px 8px',borderRadius:'99px',background:'rgba(0,212,255,0.1)',color:'#00d4ff'}}>{s.tag}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Price vs */}
+            <p style={{fontSize:'11px',fontWeight:500,letterSpacing:'0.08em',textTransform:'uppercase',color:'#4a5568',marginBottom:'0.75rem'}}>prețul real</p>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px',marginBottom:'1.5rem'}}>
+              <div style={{background:'rgba(255,255,255,0.03)',border:'0.5px solid rgba(255,255,255,0.07)',borderRadius:'12px',padding:'14px'}}>
+                <div style={{fontSize:'11px',color:'#6b7a8d',marginBottom:'6px',fontWeight:500}}>Fără VibeBuddy</div>
+                {['Claude Pro — $20/lună','ChatGPT Plus — $20/lună','xAI Grok — $25/lună','Codex separat — nu există'].map((item,i) => (
+                  <div key={i} style={{fontSize:'12px',color:'#6b7a8d',display:'flex',alignItems:'center',gap:'6px',marginBottom:'4px'}}>
+                    <span style={{width:5,height:5,borderRadius:'50%',background:'#ff4757',flexShrink:0,display:'inline-block'}} />{item}
+                  </div>
+                ))}
+                <div style={{marginTop:'10px',paddingTop:'8px',borderTop:'0.5px solid rgba(255,255,255,0.07)',fontSize:'13px',fontWeight:500,color:'#e8edf2'}}>Total: <span style={{color:'#ff4757'}}>$65+/lună</span></div>
+              </div>
+              <div style={{background:'rgba(255,255,255,0.03)',border:'0.5px solid rgba(0,255,135,0.2)',borderRadius:'12px',padding:'14px'}}>
+                <div style={{fontSize:'11px',color:'#6b7a8d',marginBottom:'6px',fontWeight:500}}>Cu VibeBuddy</div>
+                {['Claude Sonnet 4.6','OpenAI Codex VibeCoding','GPT-4o + xAI Grok','Suport direct pe WhatsApp'].map((item,i) => (
+                  <div key={i} style={{fontSize:'12px',color:'#6b7a8d',display:'flex',alignItems:'center',gap:'6px',marginBottom:'4px'}}>
+                    <span style={{width:5,height:5,borderRadius:'50%',background:'#00ff87',flexShrink:0,display:'inline-block'}} />{item}
+                  </div>
+                ))}
+                <div style={{marginTop:'10px',paddingTop:'8px',borderTop:'0.5px solid rgba(255,255,255,0.07)',fontSize:'13px',fontWeight:500,color:'#e8edf2'}}>Total: <span style={{color:'#00ff87'}}>$9/lună</span></div>
+              </div>
+            </div>
+            {/* Price Block */}
+            <div style={{background:'rgba(255,255,255,0.03)',border:'2px solid rgba(0,255,135,0.3)',borderRadius:'12px',padding:'20px 24px',marginBottom:'1.5rem',display:'flex',alignItems:'center',gap:'24px',flexWrap:'wrap'}}>
+              <div>
+                <div style={{fontSize:'42px',fontWeight:500,color:'#00ff87',lineHeight:1}}>$9</div>
+                <div style={{fontSize:'13px',color:'#6b7a8d',marginTop:'2px'}}>pe lună · anulezi oricând</div>
+              </div>
+              <div style={{width:'0.5px',height:'60px',background:'rgba(255,255,255,0.07)',flexShrink:0}} />
+              <div style={{flex:1,display:'flex',flexDirection:'column',gap:'6px'}}>
+                {['Mesaje nelimitate — fără cap, fără pauze','4 modele AI + 5 moduri specializate','VibeCoding — proiecte complete, nu snippet-uri','Suport direct cu Sergiu pe WhatsApp'].map((item,i) => (
+                  <div key={i} style={{fontSize:'13px',color:'#6b7a8d',display:'flex',alignItems:'center',gap:'8px'}}>
+                    <span style={{width:6,height:6,borderRadius:'50%',background:'#00ff87',flexShrink:0,display:'inline-block'}} />{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* CTAs */}
+            <a href="https://buddy.daeu.online/" target="_blank" rel="noreferrer"
+              style={{display:'block',width:'100%',padding:'14px',borderRadius:'10px',background:'#00ff87',border:'none',fontSize:'15px',fontWeight:600,color:'#030508',cursor:'pointer',textAlign:'center',textDecoration:'none',marginBottom:'8px'}}>
+              Testează gratuit — 50 mesaje
+            </a>
+            <a href="https://wa.me/40768676141" target="_blank" rel="noreferrer"
+              style={{display:'block',width:'100%',padding:'11px',borderRadius:'10px',background:'transparent',border:'0.5px solid rgba(255,255,255,0.07)',fontSize:'13px',color:'#6b7a8d',cursor:'pointer',textAlign:'center',textDecoration:'none'}}>
+              Întreabă mai întâi pe WhatsApp
+            </a>
+          </div>
         </section>
 
         {/* Features Section - FULL SCREEN */}
@@ -2126,7 +2508,7 @@ export default function App() {
                             className="flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100 self-start sm:self-auto shrink-0"
                           >
                             {luckyLoading.q1 ? <RefreshCcw className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
-                            I'm feeling lucky
+                            🤖 Ask Buddy
                           </button>
                         </div>
                         <textarea
@@ -2148,7 +2530,7 @@ export default function App() {
                             className="flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100 self-start sm:self-auto shrink-0"
                           >
                             {luckyLoading.q2 ? <RefreshCcw className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
-                            I'm feeling lucky
+                            🤖 Ask Buddy
                           </button>
                         </div>
                         <textarea
@@ -2170,7 +2552,7 @@ export default function App() {
                             className="flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100 self-start sm:self-auto shrink-0"
                           >
                             {luckyLoading.q3 ? <RefreshCcw className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
-                            I'm feeling lucky
+                            🤖 Ask Buddy
                           </button>
                         </div>
                         <textarea

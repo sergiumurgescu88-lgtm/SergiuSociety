@@ -34,7 +34,91 @@ const ChatBuddyPage = () => {
     const userMsg: Message = { role: "user", content: text };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
+
+    const lowerInput = input.trim().toLowerCase();
+
+    if (
+      lowerInput.includes("site") ||
+      lowerInput.includes("website") ||
+      lowerInput.includes("landing page") ||
+      lowerInput.includes("pagina") ||
+      lowerInput.includes("business")
+    ) {
+      try {
+        const res = await fetch("https://buddy.daeu.online/create-page", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            page_name: "BusinessLandingPage",
+            title: "Business Premium Website",
+            subtitle: input
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          setInput("");
+          setLoading(false);
+
+          setMessages(prev => [
+            ...prev,
+            {
+              role: "assistant",
+              content: "🚀 Pagina a fost creată automat: " + data.file
+            }
+          ]);
+          return;
+        }
+      } catch (err) {
+        console.error("builder error", err);
+      }
+    }
     setInput("");
+    
+    const lower = text.toLowerCase();
+
+    if (
+      lower.includes("site") ||
+      lower.includes("website") ||
+      lower.includes("landing page") ||
+      lower.includes("pagina") ||
+      lower.includes("restaurant") ||
+      lower.includes("business")
+    ) {
+      try {
+        const res = await fetch("https://buddy.daeu.online/create-page", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            page_name: "BusinessLandingPage",
+            title: "Restaurant Italian Premium",
+            subtitle: text
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          setMessages(prev => [
+            ...prev,
+            {
+              role: "assistant",
+              content: "🚀 Landing page creată automat: " + data.file
+            }
+          ]);
+          return;
+        }
+      } catch (e) {
+        console.error("builder error", e);
+      }
+    }
+
+
     setLoading(true);
 
     try {

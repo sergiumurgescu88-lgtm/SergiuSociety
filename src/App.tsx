@@ -9,6 +9,9 @@ import OpenClaw from "./pages/OpenClaw.tsx";
 import PaperclipClaw from "./pages/PaperclipClaw.tsx";
 import NemoClaw from "./pages/NemoClaw.tsx";
 import HermesClaw from "./pages/HermesClaw.tsx";
+import Academy from "./pages/Academy.tsx";
+import AfacereLaCheie from "./pages/AfacereLaCheie.tsx";
+import ArsenalAPI from "./pages/ArsenalAPI.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,12 +27,11 @@ const App = () => (
           <Route path="/paperclipclaw" element={<PaperclipClaw />} />
           <Route path="/nemoclaw" element={<NemoClaw />} />
           <Route path="/hermesclaw" element={<HermesClaw />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
           <Route path="/academy" element={<Academy />} />
-            <Route path="/afacerelacheie" element={<AfacereLaCheie />} />
-            <Route path="/arsenalapi" element={<ArsenalAPI />} />
-          </Routes>
+          <Route path="/afacerelacheie" element={<AfacereLaCheie />} />
+          <Route path="/arsenalapi" element={<ArsenalAPI />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

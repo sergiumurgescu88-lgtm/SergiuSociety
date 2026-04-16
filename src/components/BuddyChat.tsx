@@ -26,6 +26,47 @@ export default function BuddyChat() {
     const userMsg = input.trim();
     setInput("");
     setMessages(prev => [...prev, { role: "user", content: userMsg }]);
+    const lower = userMsg.toLowerCase();
+
+    if (
+      lower.includes("site") ||
+      lower.includes("website") ||
+      lower.includes("landing page") ||
+      lower.includes("pagina") ||
+      lower.includes("restaurant") ||
+      lower.includes("business")
+    ) {
+      try {
+        const res = await fetch("https://buddy.daeu.online/create-page", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            page_name: "BusinessLandingPage",
+            title: "Business Premium Website",
+            subtitle: userMsg
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          setMessages(prev => [
+            ...prev,
+            {
+              role: "assistant",
+              content: "🚀 Pagina a fost creată automat: " + data.file
+            }
+          ]);
+          return;
+        }
+      } catch (e) {
+        console.error("builder error", e);
+      }
+    }
+
+
     setLoading(true);
 
     try {
