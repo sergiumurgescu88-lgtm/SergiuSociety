@@ -1392,7 +1392,7 @@ export default function App() {
           
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="https://start.daeu.online/" target="_blank" className="text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</a>
+            <a href="https://buddy.daeu.online/" target="_blank" className="text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</a>
             {/* Agenți Dropdown */}
             <div className="relative">
               <button
@@ -1406,7 +1406,7 @@ export default function App() {
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsAgentsOpen(false)} />
                   <div className="absolute left-0 top-8 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px]">
-                    <button onClick={() => { window.open("https://start.daeu.online/", "_blank"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 Vibe Buddy</button>
+                    <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 Vibe Buddy</button>
                     <button onClick={() => { window.location.href = "/openclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">🤖 OpenClaw</button>
                     <button onClick={() => { window.location.href = "/paperclipclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">📎 PaperclipClaw</button>
                     <button onClick={() => { window.location.href = "/nemoclaw"; setIsAgentsOpen(false); }} className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors">⚡ NemoClaw</button>
@@ -1417,7 +1417,7 @@ export default function App() {
             </div>
             <button onClick={() => { pushHistoryState(); nav("/academy"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🎓 Academy</button>
             <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">{t.nav_afacere}</button>
-            <button onClick={() => { window.open("https://start.daeu.online/", "_blank"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🤖 Vibe Buddy</button>
+            <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); }} className="hover:scale-105 transition-all duration-200 font-semibold text-[15px] text-slate-900">🤖 Vibe Buddy</button>
             
             {/* Auth Button Desktop */}
             {isAuthenticated ? (
@@ -1494,7 +1494,7 @@ export default function App() {
             >
               <div className="px-3 py-4 flex flex-col gap-2">
                 {/* Buddy CTA buton verde */}
-                <button onClick={() => { window.open("https://start.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-white py-2.5 px-3 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</button>
+                <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-white py-2.5 px-3 rounded-xl transition-all duration-200" style={{background:"#00c96e"}}>Testează GRATUIT Buddy</button>
                 {/* Agenți dropdown mobile */}
                 <button onClick={() => setIsMobileAgentsOpen(!isMobileAgentsOpen)} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200 flex items-center justify-between">
                   🤖 Agenți
@@ -1506,12 +1506,12 @@ export default function App() {
                     <button onClick={() => { window.location.href = "/paperclipclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">📎 PaperclipClaw</button>
                     <button onClick={() => { window.location.href = "/nemoclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">⚡ NemoClaw</button>
                     <button onClick={() => { window.location.href = "/hermesclaw"; setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🧠 HermesClaw</button>
-                    <button onClick={() => { window.open("https://start.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 Buddy</button>
+                    <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2 px-3 rounded-xl hover:bg-slate-50 transition-all duration-200">🤖 Buddy</button>
                   </div>
                 )}
                 <button onClick={() => { pushHistoryState(); nav("/academy"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🎓 Academy</button>
                 <button onClick={() => { pushHistoryState(); nav("/afacerelacheie"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">💼 Afacere la Cheie</button>
-                <button onClick={() => { window.open("https://start.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🤖 Vibe Buddy</button>
+                <button onClick={() => { window.open("https://buddy.daeu.online/", "_blank"); setIsMobileMenuOpen(false); }} className="text-left text-sm font-semibold text-slate-900 py-2.5 px-3 rounded-xl hover:bg-slate-50 hover:scale-105 transition-all duration-200">🤖 Vibe Buddy</button>
                 <div className="border-t border-slate-100 mt-1 pt-2 flex gap-2">
                   {(['ro','en','es'] as Lang[]).map(l => (
                     <button key={l} onClick={() => { setLang(l); setIsMobileMenuOpen(false); }}
@@ -1608,7 +1608,7 @@ export default function App() {
 
               {/* CARD 2 — VibeBuddy */}
               <div
-                onClick={() => window.open('https://start.daeu.online/', '_blank')}
+                onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
                 className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/80 to-purple-50/60 p-4 md:p-8 hover:shadow-2xl hover:border-violet-400 transition-all duration-300 relative"
               >
                 <span className="absolute -top-3 left-4 md:left-8 bg-violet-600 text-white text-[10px] md:text-xs font-bold px-3 py-0.5 md:px-4 md:py-1 rounded-full">🟢 DISPONIBIL ACUM</span>
@@ -1716,7 +1716,7 @@ export default function App() {
 
               {/* CARD 6 — Referral DaUSA */}
               <div
-                onClick={() => window.open('https://start.daeu.online/', '_blank')}
+                onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
                 className="group cursor-pointer rounded-2xl md:rounded-3xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50/80 to-green-50/60 p-4 md:p-8 hover:shadow-2xl hover:border-emerald-400 transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
@@ -1863,7 +1863,7 @@ export default function App() {
               </div>
             </div>
             {/* CTAs */}
-            <a href="https://start.daeu.online/" target="_blank" rel="noreferrer"
+            <a href="https://buddy.daeu.online/" target="_blank" rel="noreferrer"
               style={{display:'block',width:'100%',padding:'14px',borderRadius:'10px',background:'#00ff87',border:'none',fontSize:'15px',fontWeight:600,color:'#030508',cursor:'pointer',textAlign:'center',textDecoration:'none',marginBottom:'8px'}}>
               Testează gratuit — 50 mesaje
             </a>
@@ -2813,7 +2813,7 @@ export default function App() {
                   🤖 Activeaza Buddy Personal — $9/luna
                 </a>
                 <button
-                  onClick={() => window.open('https://start.daeu.online/', '_blank')}
+                  onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
                   className="inline-flex items-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold px-6 py-5 rounded-2xl text-sm transition-all"
                 >
                   Testeaza gratuit 30 mesaje
@@ -2894,7 +2894,7 @@ export default function App() {
                     🚀 Activează — $9/lună
                   </a>
                   <button
-                    onClick={() => window.open('https://start.daeu.online/', '_blank')}
+                    onClick={() => window.open('https://buddy.daeu.online/', '_blank')}
                     className="w-full text-center bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all"
                   >
                     Testează gratuit
