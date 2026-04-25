@@ -1,0 +1,37 @@
+import AgentLandingPage from "@/components/AgentLandingPage";
+const otherAgents = [
+  { name: "OpenClaw", path: "/openclaw" },
+  { name: "NemoClaw", path: "/nemoclaw" },
+  { name: "HermesClaw", path: "/hermesclaw" },
+];
+const PaperclipClaw = () => (
+  <AgentLandingPage
+    config={{
+      name: "Paperclip",
+      accentColor: "blue",
+      accentHex: "#60a5fa",
+      title: "Paperclip — Compania ta AI autonomă",
+      subtitle: "Orchestrare multi-agent cu org chart, bugete, goals și audit trail. Angajează agenți AI, setează obiective, monitorizează din dashboard — business-ul rulează singur.",
+      quote: { text: "Dacă OpenClaw este angajatul, Paperclip este compania." },
+      stats: [
+        { value: "46.6K+", label: "GitHub Stars" },
+        { value: "Multi-company", label: "izolat" },
+        { value: "$0", label: "runaway costs" },
+        { value: "MIT", label: "Open Source" },
+      ],
+      features: [
+        { title: "Org Chart AI", description: "Tu ești Board of Directors. CEO Agent coordonează CTO, CMO, CFO. Fiecare cu Engineer, Copywriter, Researcher sub el — exact ca o companie reală." },
+        { title: "Goal Alignment", description: "Fiecare task minor e subordonat misiunii companiei. Agenții nu 'derivă' — știu mereu de ce fac ce fac." },
+        { title: "Heartbeat Mechanism", description: "Agenții se 'trezesc' pe schedule, verifică queue-ul de task-uri, acționează și hibernează. Zero costuri inutile." },
+        { title: "Cost Control", description: "Budget lunar per agent. Când limita e atinsă → procesul se blochează automat. Nu mai există facturi surpriză." },
+        { title: "Audit Trail imutabil", description: "Toate deciziile, conversațiile și acțiunile stocate în PostgreSQL. Nimic nu se pierde, totul e traceable." },
+        { title: "Multi-Company", description: "O instanță Paperclip poate rula N companii complet izolate. Perfect pentru agenții și freelanceri cu mai mulți clienți." },
+        { title: "Bring Your Own Agent", description: "OpenClaw, Claude Code, Hermes, Bash scripts — orice agent care răspunde la HTTP poate fi 'angajat' în Paperclip." },
+        { title: "PostgreSQL backend", description: "Date sigure, persistente, scalabile. Toate stările, task-urile și rezultatele agenților stocate profesional." },
+      ],
+      githubUrl: "https://github.com/paperclipai/paperclip",
+      otherAgents,
+    }}
+  />
+);
+export default PaperclipClaw;

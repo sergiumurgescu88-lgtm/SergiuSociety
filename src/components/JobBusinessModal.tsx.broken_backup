@@ -1,0 +1,376 @@
+import React, { useState, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Copy, Check, ChevronDown, ChevronUp, RefreshCw, Loader2 } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import type { JobData } from '../constants';
+import { jobQuestions, defaultQuestions } from '../constants/jobQuestions';
+
+interface Props {
+  job: JobData;
+  onClose: () => void;
+}
+
+const STRATEGY_URL = 'https://daeu.online/api/chat';
+
+const pipelineGradients = [
+  { gradient: 'from-red-600 to-rose-700', border: 'border-red-500/30', bg: 'bg-red-950/40' },
+  { gradient: 'from-blue-600 to-cyan-700', border: 'border-blue-500/30', bg: 'bg-blue-950/40' },
+  { gradient: 'from-amber-500 to-yellow-600', border: 'border-amber-500/30', bg: 'bg-amber-950/40' },
+  { gradient: 'from-emerald-600 to-green-700', border: 'border-emerald-500/30', bg: 'bg-emerald-950/40' },
+  { gradient: 'from-purple-600 to-violet-700', border: 'border-purple-500/30', bg: 'bg-purple-950/40' },
+];
+
+function parsePipelines(markdown: string) {
+  const sections = markdown.split(/(?=^## |^\d+\. \*\*)/m).filter(s => s.trim());
+  return sections.map((section, i) => {
+    const titleMatch = section.match(/^## (.+)/m);
+    const title = titleMatch ? titleMatch[1].trim() : `Pipeline ${i + 1}`;
+    return { title, content: section.replace(/^## .+\n?/, '').trim(), style: pipelineGradients[i % 5] };
+  });
+}
+
+export default function JobBusinessModal({ job, onClose }: Props) {
+  const [step, setStep] = useState<'questions' | 'loading' | 'result'>('questions');
+  const [answers, setAnswers] = useState<string[]>(['', '', '']);
+  const [strategyMarkdown, setStrategyMarkdown] = useState('');
+  const [openPipelines, setOpenPipelines] = useState<Record<number, boolean>>({});
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState('');
+  const abortRef = useRef<AbortController | null>(null);
+
+  const questions = jobQuestions[job.title] || defaultQuestions;
+
+  const canSubmit = answers.every(a => a.trim().length > 0);
+
+    const streamStrategy = useCallback(async () => {
+      setStep('loading');
+      setStrategyMarkdown('');
+      setError('');
+      setOpenPipelines({});
+
+      const controller = new AbortController();
+      abortRef.current = controller;
+
+      try {
+        const prompt =
+          `Genereaza exact 5 pipeline-uri de venit pentru: ${job.title}\n\nREGULA STRICTA DE FORMAT - respecta exact:\n## 🎬 Nume Pipeline 1\nDescriere scurta.\n**Pasi:** 1. pas 2. pas\n**Venit lunar:** X-Y EUR\n**Timp pana la primul venit:** Z saptamani\n\n## 🤖 Nume Pipeline 2\n(etc)\n\nFoloseste emojis diferite: 🎬 🤖 💰 🎓 🔗\nIncepe FIECARE sectiune cu ## urmat de emoji si titlu.\n\n` +
+          questions.map((q: string, i: number) => `Q${i + 1}: ${q}\nRaspuns: ${answers[i]}`).join('\n\n') +
+          `\n\nGenereaza exact 5 pipeline-uri de venit distincte. ` +
+          `Fiecare pipeline TREBUIE sa inceapa cu "## " urmat de un emoji din lista (🎬🤖💰🎓🔗) si un titlu. ` +
+          `Pentru fiecare include: descriere, pasi de implementare, venit estimat lunar, timp pana la primul venit.`;
+
+        const resp = await fetch(STRATEGY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: [{ role: 'user', content: prompt }], userId: 'modal-' + job.title }),
+          signal: controller.signal,
+        });
+
+        if (!resp.ok) {
+          const err = await resp.json().catch(() => ({ error: 'Unknown error' }));
+          setError(err.error || `Error ${resp.status}`);
+          setStep('questions');
+          return;
+        }
+
+        const data = await resp.json();
+        if (!data.success) {
+          setError(data.error || 'Eroare la generare');
+          setStep('questions');
+          return;
+        }
+
+        setStrategyMarkdown(data.text || data.reply || '');
+        setStep('result');
+      } catch (e: any) {
+        if (e.name !== 'AbortError') {
+          setError(e.message || 'Failed to generate strategy');
+          setStep('questions');
+        }
+      }
+    }, [job.title, questions, answers]);
+
+  const handleCopyAll = () => {
+    navigator.clipboard.writeText(strategyMarkdown);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const togglePipeline = (idx: number) => {
+    setOpenPipelines(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
+  const pipelines = parsePipelines(strategyMarkdown);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-[9999] flex justify-end"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={onClose}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        />
+
+        <motion.div
+          className="relative w-full md:max-w-3xl h-full bg-slate-950 overflow-y-auto shadow-2xl md:border-l border-slate-800"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+        >
+          {/* Header */}
+          <div className="sticky top-0 z-10 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 p-3 md:p-5 flex items-center justify-between">
+            <div className="min-w-0 flex-1 mr-2">
+              <h2 className="text-base md:text-xl font-black text-white truncate">{job.title}</h2>
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-wider">{job.category}</span>
+                <span className={`text-[10px] md:text-xs font-bold px-1.5 md:px-2 py-0.5 rounded-full ${job.automationRisk > 80 ? 'bg-rose-500/20 text-rose-400' : job.automationRisk > 50 ? 'bg-amber-500/20 text-amber-400' : 'bg-green-500/20 text-green-400'}`}>
+                  {job.automationRisk}%
+                </span>
+                {step !== 'questions' && (
+                  <button
+                    onClick={() => { setStep('questions'); abortRef.current?.abort(); }}
+                    className="text-[10px] md:text-xs text-blue-400 hover:text-blue-300 font-medium ml-2"
+                  >
+                    ← Înapoi la întrebări
+                  </button>
+              </div>
+            </div>
+            <button
+              onClick={() => { onClose(); abortRef.current?.abort(); }}
+              className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-white hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="p-3 md:p-5">
+            {/* ═══════ STEP 1: Questions ═══════ */}
+            {step === 'questions' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-5"
+              >
+                <div className="text-center mb-6">
+                  <h3 className="text-lg md:text-xl font-black text-white mb-2">
+                    📋 Spune-ne mai multe despre tine
+                  </h3>
+                  <p className="text-white text-sm">
+                    Răspunde la 3 întrebări pentru a genera o strategie <span className="text-white font-bold">100% personalizată</span> cu AI
+                  </p>
+                </div>
+
+                {error && (
+                  <div className="bg-rose-500/10 border border-rose-500/30 rounded-xl p-3 text-rose-400 text-sm">
+                    ⚠️ {error}
+                  </div>
+
+                {questions.map((q, i) => (
+                  <div key={i} className="space-y-2">
+                    <label className="block text-sm font-bold text-white">
+                      <span className="text-blue-400 mr-1.5">Q{i + 1}.</span>
+                      {q}
+                    </label>
+                    <textarea
+                      value={answers[i]}
+                      onChange={(e) => {
+                        const next = [...answers];
+                        next[i] = e.target.value;
+                        setAnswers(next);
+                      }}
+                      placeholder="Scrie răspunsul tău aici..."
+                      rows={2}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 resize-none transition-colors"
+                    />
+                  </div>
+                ))}
+
+                <button
+                  onClick={streamStrategy}
+                  disabled={!canSubmit}
+                  className={`w-full py-4 rounded-2xl font-black text-base transition-all ${
+                    canSubmit
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/25'
+                      : 'bg-slate-800 text-white/40 cursor-not-allowed'
+                  }`}
+                >
+                  🚀 Generează Strategia
+                </button>
+              </motion.div>
+
+            {/* ═══════ LOADING ═══════ */}
+            {step === 'loading' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex flex-col items-center justify-center py-20 space-y-4"
+              >
+                <Loader2 className="w-10 h-10 text-blue-400 animate-spin" />
+                <p className="text-white text-sm text-center font-medium">
+                  Analizăm profilul tău și construim<br />strategia personalizată...
+                </p>
+                <div className="flex gap-1">
+                  {[0, 1, 2, 3, 4].map(i => (
+                    <motion.div
+                      key={i}
+                      className="w-2 h-2 rounded-full bg-blue-500"
+                      animate={{ opacity: [0.3, 1, 0.3] }}
+                      transition={{ duration: 1.2, delay: i * 0.2, repeat: Infinity }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+
+            {/* ═══════ STEP 2: Result ═══════ */}
+            {step === 'result' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="space-y-4"
+              >
+                {/* Top action bar */}
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="text-xs text-white/50">
+                    {pipelines.length > 0 ? `${pipelines.length} pipeline-uri generate` : 'Se generează...'}
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleCopyAll}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors"
+                    >
+                      {copied ? <><Check className="w-3.5 h-3.5" /> Copiat!</> : <><Copy className="w-3.5 h-3.5" /> 📋 Copiază strategia</>}
+                    </button>
+                    <button
+                      onClick={streamStrategy}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" /> 🔄 Regenerează
+                    </button>
+                  </div>
+                </div>
+
+                {/* Pipelines as accordion */}
+                {pipelines.length > 0 ? (
+                  pipelines.map((pipeline, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.08 }}
+                      className={`rounded-2xl border ${pipeline.style.border} overflow-hidden`}
+                    >
+                      <button
+                        onClick={() => togglePipeline(idx)}
+                        className={`w-full bg-gradient-to-r ${pipeline.style.gradient} p-3 md:p-4 flex items-center justify-between text-left`}
+                      >
+                        <h3 className="text-sm md:text-base font-black text-white pr-2">{pipeline.title}</h3>
+                        {openPipelines[idx] ? (
+                          <ChevronUp className="w-5 h-5 text-white/70 flex-shrink-0" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-white/70 flex-shrink-0" />
+                      </button>
+                      <AnimatePresence>
+                        {openPipelines[idx] && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className={`${pipeline.style.bg} overflow-hidden`}
+                          >
+                            <div className="p-3 md:p-5 max-w-none" style={{color:"#ffffff"}}>
+                              <ReactMarkdown>{pipeline.content}</ReactMarkdown>
+                            </div>
+                          </motion.div>
+                      </AnimatePresence>
+                    </motion.div>
+                  ))
+                ) : (
+                  // Show raw streaming markdown before pipelines are fully parsed
+                  <div className="bg-slate-900/80 rounded-2xl p-4 md:p-6 max-w-none" style={{color:"#ffffff"}}>
+                    <ReactMarkdown>{strategyMarkdown || '...'}</ReactMarkdown>
+                  </div>
+
+                {/* Bottom CTA — conversion block */}
+                <div className="mt-6 rounded-2xl overflow-hidden border border-white/10" style={{background:'linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%)'}}>
+                  {/* Header */}
+                  <div className="px-5 pt-5 pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-2xl">🤖</span>
+                      <h3 className="text-white font-black text-base md:text-lg">Buddy știe tot despre {job.title}</h3>
+                    </div>
+                    <p className="text-white/60 text-xs md:text-sm">Agent AI antrenat pe toate cele 5 pipeline-uri — lucrează non-stop pentru tine</p>
+                  </div>
+
+                  {/* 8 capability pills */}
+                  <div className="px-5 py-4 grid grid-cols-2 gap-2">
+                    {[
+                      {icon:'💻', label:'Coding & Tech', sub:'Comenzi exacte copy-paste'},
+                      {icon:'📣', label:'Marketing', sub:'Reclame & copywriting'},
+                      {icon:'💰', label:'Side Hustle', sub:'Primul €1000 online'},
+                      {icon:'⚙️', label:'Setup Complet', sub:'Stripe, site, newsletter'},
+                      {icon:'📊', label:'Business Plan', sub:'Proiecții & pricing'},
+                      {icon:'🎯', label:'Sales Script', sub:'DM-uri & cold email'},
+                      {icon:'🤖', label:'AI Workflows', sub:'Make, Zapier, n8n'},
+                      {icon:'📱', label:'Social Media', sub:'LinkedIn, YouTube, TikTok'},
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 bg-white/5 rounded-xl p-2.5">
+                        <span className="text-lg leading-none mt-0.5">{item.icon}</span>
+                        <div>
+                          <div className="text-white text-xs font-bold">{item.label}</div>
+                          <div className="text-white/50 text-xs">{item.sub}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Example */}
+                  <div className="mx-5 mb-4 rounded-xl overflow-hidden border border-white/10">
+                    <div className="bg-white/5 px-4 py-2.5">
+                      <span className="text-white/50 text-xs font-semibold uppercase tracking-wide">Exemplu concret</span>
+                    </div>
+                    <div className="divide-y divide-white/5">
+                      <div className="px-4 py-2.5 flex gap-3">
+                        <span className="text-blue-400 text-xs font-bold shrink-0 mt-0.5">Tu:</span>
+                        <span className="text-white/80 text-xs italic">"Cum lansez primul meu produs digital săptămâna asta?"</span>
+                      </div>
+                      <div className="px-4 py-2.5 flex gap-3">
+                        <span className="text-emerald-400 text-xs font-bold shrink-0 mt-0.5">Buddy:</span>
+                        <span className="text-white/80 text-xs">Plan zilnic 7 zile, tool-uri exacte, template-uri gata de folosit</span>
+                      </div>
+                      <div className="px-4 py-2.5 flex gap-3 bg-emerald-950/30">
+                        <span className="text-yellow-400 text-xs font-bold shrink-0 mt-0.5">✅</span>
+                        <span className="text-white/80 text-xs">Produs live, pagina de vânzare activă, primele comenzi în 7 zile</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="px-5 pb-5 flex flex-col gap-2">
+                    <a
+                      href="https://buy.stripe.com/bJe14o1Ht3ZCamfedh5os00"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-4 rounded-2xl font-black text-white text-base md:text-lg text-center transition-all hover:scale-[1.02] active:scale-95 shadow-lg"
+                      style={{ background: 'linear-gradient(90deg,#6366f1,#8b5cf6,#a855f7)' }}
+                    >
+                      🚀 Activează Buddy Personal — $9/lună
+                    </a>
+
+                    <p className="text-center text-white/40 text-xs">
+                      Testează gratuit 30 mesaje · Fără contract · Cancel oricând
+                    </p>
+                  </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}

@@ -1,0 +1,36 @@
+import AgentLandingPage from "@/components/AgentLandingPage";
+const otherAgents = [
+  { name: "OpenClaw", path: "/openclaw" },
+  { name: "PaperclipClaw", path: "/paperclipclaw" },
+  { name: "HermesClaw", path: "/hermesclaw" },
+];
+const NemoClaw = () => (
+  <AgentLandingPage
+    config={{
+      name: "NemoClaw",
+      accentColor: "green",
+      accentHex: "#4ade80",
+      title: "NemoClaw — OpenClaw în sandbox securizat",
+      subtitle: "Plugin NVIDIA oficial care mută OpenClaw într-un sandbox cu 4 straturi de securitate la nivel kernel. Fiecare request de rețea, acces la fișier și inferență — guvernat de politici declarative.",
+      quote: { text: "Mac și Windows sunt OS-urile pentru PC. OpenClaw este OS-ul pentru AI personal. NemoClaw oferă stratul de infrastructură lipsă — accesul de care au nevoie agenții, cu securitatea pe care o cere producția.", author: "Jensen Huang, CEO NVIDIA" },
+      stats: [
+        { value: "4", label: "straturi securitate" },
+        { value: "0", label: "acces neautorizat" },
+        { value: "L7", label: "HTTP Inspection" },
+        { value: "K3s", label: "Kubernetes intern" },
+      ],
+      features: [
+        { title: "L1 — Network Egress", description: "Toate conexiunile externe blocate by default. Doar destinațiile declarate explicit în policy YAML sunt permise. Proxy-ul inspectează TLS la nivel L7." },
+        { title: "L2 — Filesystem Landlock", description: "/usr, /lib, /etc, /proc → Read-Only strict la nivel kernel. Agentul nu poate rescrie binare. Zona scribilă: /sandbox + /tmp limitat la 64MB RAM." },
+        { title: "L3 — Process Isolation", description: "Procese ca utilizatori de-privilegiați (non-root). ulimit -u 512 previne fork bomb-urile. cap-drop=ALL înlătură toate capabilitățile Linux la runtime." },
+        { title: "L4 — Privacy Router", description: "Cererile LLM rutate prin privacy router. Opțional: modele NVIDIA locale (RTX) pentru a evita trimiterea codului la terți (OpenAI/Google)." },
+        { title: "Nemotron 120B local", description: "Rulează inferență local pe GPU NVIDIA. Codul tău nu părăsește niciodată mașina. Performanță enterprise, confidențialitate maximă." },
+        { title: "Policy YAML declarativ", description: "Securitatea configurată ca infrastructure-as-code. Versionat în Git, auditabil, reproductibil. Zero configurare manuală la restart." },
+      ],
+      githubUrl: "https://github.com/NVIDIA/NemoClaw",
+      warningBox: "Alpha Software: NemoClaw este în preview din 16 martie 2026. APIs și behavior se pot schimba. Nu folosiți în producție fără testare. Vibe Coding Buddy te ghidează să-l configurezi corect și sigur.",
+      otherAgents,
+    }}
+  />
+);
+export default NemoClaw;

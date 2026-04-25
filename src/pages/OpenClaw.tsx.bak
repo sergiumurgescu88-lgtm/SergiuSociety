@@ -1,0 +1,37 @@
+import AgentLandingPage from "@/components/AgentLandingPage";
+const otherAgents = [
+  { name: "PaperclipClaw", path: "/paperclipclaw" },
+  { name: "NemoClaw", path: "/nemoclaw" },
+  { name: "HermesClaw", path: "/hermesclaw" },
+];
+const OpenClaw = () => (
+  <AgentLandingPage
+    config={{
+      name: "OpenClaw",
+      accentColor: "purple",
+      accentHex: "#a78bfa",
+      title: "OpenClaw — AI-ul care chiar face lucruri",
+      subtitle: "Golește inbox-ul, trimite emailuri, gestionează calendarul, te check-in la zbor. Totul din WhatsApp, Telegram sau orice app de chat folosești deja.",
+      quote: { text: "La fel cum te-ai simțit când ai văzut prima oară ChatGPT, DeepSeek sau Claude Code — OpenClaw îți dă același sentiment. O schimbare fundamentală a modului în care folosim AI.", author: "@abhi__katiyar" },
+      stats: [
+        { value: "47K+", label: "GitHub Stars" },
+        { value: "50+", label: "integrări" },
+        { value: "MIT", label: "Open Source" },
+        { value: "24/7", label: "activ" },
+      ],
+      features: [
+        { title: "Rulează pe mașina ta", description: "Mac, Windows sau Linux. Anthropic, OpenAI sau modele locale. Privat by default — datele tale rămân ale tale." },
+        { title: "Orice app de chat", description: "Vorbești cu el pe WhatsApp, Telegram, Discord, Slack, Signal sau iMessage. Funcționează în DM-uri și grupuri." },
+        { title: "Memorie persistentă", description: "Te ține minte și devine unic al tău. Preferințele tale, contextul tău, AI-ul tău personal." },
+        { title: "Control browser", description: "Navighează web, completează formulare și extrage date din orice site. Control complet CDP." },
+        { title: "Acces complet sistem", description: "Citește și scrie fișiere, rulează comenzi shell, execută scripturi. Acces complet sau în sandbox — alegerea ta." },
+        { title: "Skills & Plugins", description: "Extinde cu skills din comunitate sau construiește-ți propriile. Poate chiar să-și scrie singur skill-uri noi." },
+        { title: "Heartbeat proactiv", description: "Se 'trezește' pe schedule, verifică task-urile, acționează și te notifică. Zero costuri inutile." },
+        { title: "Multi-agent", description: "Orchestrează Claude Code, Codex și alți agenți din Telegram. Autonomie completă pe proiectele tale." },
+      ],
+      githubUrl: "https://github.com/openclaw/openclaw",
+      otherAgents,
+    }}
+  />
+);
+export default OpenClaw;
